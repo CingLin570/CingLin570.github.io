@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>cli</title>
-    <url>/2020/11/04/cli/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>Vue Cli</title>
     <url>/2020/11/04/hello-world/</url>
     <content><![CDATA[<p>圖一<br><img src="https://i.imgur.com/aNwSDtY.png"></p>
@@ -51,5 +46,11 @@
 <p><img src="https://i.imgur.com/Vj11447.png"><br>再來我們還會有更目錄下的檔案，就是我們運行的環境</p>
 <p>package.json:安裝套件所記錄的檔案</p>
 ]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue.js</tag>
+      </tags>
   </entry>
 </search>
