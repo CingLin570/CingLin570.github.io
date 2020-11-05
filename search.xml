@@ -6,9 +6,11 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title></title>
+    <title>Vue Cli</title>
     <url>/2020/11/04/hello-world/</url>
-    <content><![CDATA[<h1 id="Vue-Cli"><a href="#Vue-Cli" class="headerlink" title="Vue Cli"></a>Vue Cli</h1><p>圖一<br><img src="https://i.imgur.com/aNwSDtY.png"><br>圖二<br><img src="https://i.imgur.com/2M2CLCy.png"></p>
+    <content><![CDATA[<p>圖一<br><img src="https://i.imgur.com/aNwSDtY.png"></p>
+<a id="more"></a>
+<p>圖二<br><img src="https://i.imgur.com/2M2CLCy.png"></p>
 <p>我們在開發的過程中，會使用很多的檔案，例如jpg、png檔案等等，我們也可能有撰寫javaScript程式碼，使用到ES6的語法，在比較舊的瀏覽器就沒辦法運行，我們也可能會撰寫sass或是scss這種預處理器，還有.vue的檔案，.vue的檔案簡單來說一個檔案就是一個元件，這個元件包含了html、js、css，把這三個都結合在一起在開發上也比較容易。<br>(圖二)左邊是我們撰寫的檔案，右邊則是輸出的可以運行的檔案，因為我們沒辦法直接讀取像是sass、scss、.vue，所以會建立一個main.js，把所有檔案都進行關聯，除此之外還會建立一個loader，它會把所有檔案都載進來，最後還有一個output輸出檔案的位子，Webpack要做的事情就是，把這些loader跟main.js產生關聯性，再藉由Webpack編譯，雖然左邊的檔案沒辦法直接運行它，但是進行編譯之後呢，輸出之後就是瀏覽器可以運行的版本。<br>圖三<br><img src="https://i.imgur.com/3YbT69U.png"></p>
 <p>簡單來說，Webpack就是把我們開發中使用的工具和套件全部整合在一起，並且使用npm的方式來運行。</p>
 <p><img src="https://i.imgur.com/Hwd3OXK.png"></p>
