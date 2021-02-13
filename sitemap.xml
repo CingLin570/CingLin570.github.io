@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://cinglin570.github.io.com/2020/11/09/%E9%99%B3%E8%BF%B0%E5%BC%8F%E8%88%87%E8%A1%A8%E9%81%94%E5%BC%8F/</loc>
+    
+    <lastmod>2021-02-13</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://cinglin570.github.io.com/2020/11/04/hello-world/</loc>
+    
+    <lastmod>2020-11-06</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://cinglin570.github.io.com/about/index.html</loc>
     
     <lastmod>2020-11-05</lastmod>
@@ -10,13 +24,6 @@
   
   <url>
     <loc>http://cinglin570.github.io.com/404.html</loc>
-    
-    <lastmod>2020-11-05</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cinglin570.github.io.com/2020/11/04/hello-world/</loc>
     
     <lastmod>2020-11-05</lastmod>
     
@@ -39,7 +46,7 @@
 
   <url>
     <loc>http://cinglin570.github.io.com/</loc>
-    <lastmod>2020-11-05</lastmod>
+    <lastmod>2021-02-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -47,7 +54,14 @@
   
   <url>
     <loc>http://cinglin570.github.io.com/tags/Vue-js/</loc>
-    <lastmod>2020-11-05</lastmod>
+    <lastmod>2021-02-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://cinglin570.github.io.com/tags/javaScript/</loc>
+    <lastmod>2021-02-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -56,7 +70,14 @@
   
   <url>
     <loc>http://cinglin570.github.io.com/categories/Vue/</loc>
-    <lastmod>2020-11-05</lastmod>
+    <lastmod>2021-02-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://cinglin570.github.io.com/categories/js/</loc>
+    <lastmod>2021-02-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

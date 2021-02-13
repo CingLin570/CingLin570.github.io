@@ -3,7 +3,7 @@
   <entry>
     <title>Vue Cli</title>
     <url>/2020/11/04/hello-world/</url>
-    <content><![CDATA[<p>圖一<br><img src="https://i.imgur.com/aNwSDtY.png"></p>
+    <content><![CDATA[<h1 id="Vue-Cli"><a href="#Vue-Cli" class="headerlink" title="Vue Cli"></a>Vue Cli</h1><p>圖一<br><img src="https://i.imgur.com/aNwSDtY.png"></p>
 <a id="more"></a>
 <p>圖二<br><img src="https://i.imgur.com/2M2CLCy.png"></p>
 <p>我們在開發的過程中，會使用很多的檔案，例如jpg、png檔案等等，我們也可能有撰寫javaScript程式碼，使用到ES6的語法，在比較舊的瀏覽器就沒辦法運行，我們也可能會撰寫sass或是scss這種預處理器，還有.vue的檔案，.vue的檔案簡單來說一個檔案就是一個元件，這個元件包含了html、js、css，把這三個都結合在一起在開發上也比較容易。<br>(圖二)左邊是我們撰寫的檔案，右邊則是輸出的可以運行的檔案，因為我們沒辦法直接讀取像是sass、scss、.vue，所以會建立一個main.js，把所有檔案都進行關聯，除此之外還會建立一個loader，它會把所有檔案都載進來，最後還有一個output輸出檔案的位子，Webpack要做的事情就是，把這些loader跟main.js產生關聯性，再藉由Webpack編譯，雖然左邊的檔案沒辦法直接運行它，但是進行編譯之後呢，輸出之後就是瀏覽器可以運行的版本。<br>圖三<br><img src="https://i.imgur.com/3YbT69U.png"></p>
@@ -45,12 +45,42 @@
 <p><img src="https://i.imgur.com/HBll11c.png"><br>雖然不會被編譯，但index.html呢實際上編譯的時候，會做一些些調整，像我們編譯完會進行一些插入，css、js就會插入到html裡面</p>
 <p><img src="https://i.imgur.com/Vj11447.png"><br>再來我們還會有更目錄下的檔案，就是我們運行的環境</p>
 <p>package.json:安裝套件所記錄的檔案</p>
+<h2 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h2><p><img src="https://i.imgur.com/5k2b0gV.png"></p>
+<p>主要是放在src的資料夾裡，main.js是我們的主要檔案，所有的檔案都會跟它產生關聯</p>
+<p><img src="https://i.imgur.com/Wyybx6I.png"></p>
+<p><img src="https://i.imgur.com/M42gXXc.png"></p>
+<p>會看到vue、App.vue和router與main.js產生關聯，而router裡有Home跟About的頁面產生關聯。<br><img src="https://i.imgur.com/h1nKHlZ.png"><br>Home.vue跟About.vue都是一個完整的頁面<br><img src="https://i.imgur.com/zwu1aGG.png"><br>再來說說component資料夾，這是在我們主頁面下的小元件，像是這些就能掛載到Home.vue和About.vue頁面上，再由路由載進來，最後掛載到main.js上。</p>
+<p>如果我們要撰寫js、css(sass)的話我們會寫在assets的資料夾內。</p>
+<p>最後透過編譯，會編譯成輸出的檔案例如:public資料夾裡的index.html，使用ui裡的build建立dist檔案，注意這裡dist檔案無法直接開啟，必須使用webServer開啟。</p>
 ]]></content>
       <categories>
         <category>Vue</category>
       </categories>
       <tags>
         <tag>Vue.js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>陳述式與表達式</title>
+    <url>/2020/11/09/%E9%99%B3%E8%BF%B0%E5%BC%8F%E8%88%87%E8%A1%A8%E9%81%94%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="陳述式與表達式"><a href="#陳述式與表達式" class="headerlink" title="陳述式與表達式"></a>陳述式與表達式</h1><p><img src="https://i.imgur.com/BlWAbb7.png"></p>
+<a id="more"></a>
+
+<p>在我們觀看 MDN 文件的時候可以看到JavaScript 的陳述式與表達式有那些，</p>
+<p>陳述式:</p>
+<ul>
+<li>var、let、const</li>
+<li>if…else</li>
+<li>for</li>
+<li>block</li>
+<li>函式陳述式</li>
+</ul>
+]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>javaScript</tag>
       </tags>
   </entry>
 </search>
