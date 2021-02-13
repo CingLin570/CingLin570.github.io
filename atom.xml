@@ -6,7 +6,7 @@
   <link href="http://cinglin570.github.io.com/atom.xml" rel="self"/>
   
   <link href="http://cinglin570.github.io.com/"/>
-  <updated>2021-02-13T11:03:46.399Z</updated>
+  <updated>2021-02-13T12:06:40.835Z</updated>
   <id>http://cinglin570.github.io.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://cinglin570.github.io.com/2020/11/09/%E9%99%B3%E8%BF%B0%E5%BC%8F%E8%88%87%E8%A1%A8%E9%81%94%E5%BC%8F/"/>
     <id>http://cinglin570.github.io.com/2020/11/09/%E9%99%B3%E8%BF%B0%E5%BC%8F%E8%88%87%E8%A1%A8%E9%81%94%E5%BC%8F/</id>
     <published>2020-11-09T09:44:57.000Z</published>
-    <updated>2021-02-13T11:03:46.399Z</updated>
+    <updated>2021-02-13T12:06:40.835Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="陳述式與表達式"><a href="#陳述式與表達式" class="headerlink" title="陳述式與表達式"></a>陳述式與表達式</h1><p><img src="https://i.imgur.com/BlWAbb7.png"></p><a id="more"></a><p>在我們觀看 MDN 文件的時候可以看到JavaScript 的陳述式與表達式有那些，</p><p>陳述式:</p><ul><li>var、let、const</li><li>if…else</li><li>for</li><li>block</li><li>函式陳述式</li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="陳述式與表達式"><a href="#陳述式與表達式" class="headerlink" title="陳述式與表達式"></a>陳述式與表達式</h1><p><img src="https://i.imgur.com/BlWAbb7.png"></p><a id="more"></a><p>在我們觀看 MDN 文件的時候可以看到JavaScript 的陳述式與表達式有那些，</p><p>陳述式:</p><ul><li>var、let、const</li><li>if…else</li><li>for</li><li>block</li><li>函式陳述式</li></ul><p>1111111111</p>]]></content>
     
     
     <summary type="html">&lt;h1 id=&quot;陳述式與表達式&quot;&gt;&lt;a href=&quot;#陳述式與表達式&quot; class=&quot;headerlink&quot; title=&quot;陳述式與表達式&quot;&gt;&lt;/a&gt;陳述式與表達式&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/BlWAbb7.png&quot;&gt;&lt;/p&gt;</summary>
