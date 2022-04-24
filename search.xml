@@ -1,66 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Vue Cli</title>
-    <url>/2020/11/04/hello-world/</url>
-    <content><![CDATA[<h1 id="Vue-Cli"><a href="#Vue-Cli" class="headerlink" title="Vue Cli"></a>Vue Cli</h1><p>圖一<br><img src="https://i.imgur.com/aNwSDtY.png"></p>
-<a id="more"></a>
-<p>圖二<br><img src="https://i.imgur.com/2M2CLCy.png"></p>
-<p>我們在開發的過程中，會使用很多的檔案，例如jpg、png檔案等等，我們也可能有撰寫javaScript程式碼，使用到ES6的語法，在比較舊的瀏覽器就沒辦法運行，我們也可能會撰寫sass或是scss這種預處理器，還有.vue的檔案，.vue的檔案簡單來說一個檔案就是一個元件，這個元件包含了html、js、css，把這三個都結合在一起在開發上也比較容易。<br>(圖二)左邊是我們撰寫的檔案，右邊則是輸出的可以運行的檔案，因為我們沒辦法直接讀取像是sass、scss、.vue，所以會建立一個main.js，把所有檔案都進行關聯，除此之外還會建立一個loader，它會把所有檔案都載進來，最後還有一個output輸出檔案的位子，Webpack要做的事情就是，把這些loader跟main.js產生關聯性，再藉由Webpack編譯，雖然左邊的檔案沒辦法直接運行它，但是進行編譯之後呢，輸出之後就是瀏覽器可以運行的版本。<br>圖三<br><img src="https://i.imgur.com/3YbT69U.png"></p>
-<p>簡單來說，Webpack就是把我們開發中使用的工具和套件全部整合在一起，並且使用npm的方式來運行。</p>
-<p><img src="https://i.imgur.com/Hwd3OXK.png"></p>
-<h2 id="SPA"><a href="#SPA" class="headerlink" title="SPA"></a>SPA</h2><p>簡單來說就是由前端模擬的路由，那麼(路由)我們可以想像成一個網址，目前我們看到的網頁都是由後端決定的路由，SPA呢就是由前端所決定的路由，會在/後面加上#字號，#字號後面的user，就是我們實際運行的網址，實際上呢也只會切換#字號後面的網址，頁面也會跟著做更換；通常後端決定的路由在網頁切換的時候會有一個閃爍的感覺，如果使用前端決定的路由，更能提升使用者體驗<br><img src="https://i.imgur.com/0I2f0yJ.png"></p>
-<p><img src="https://i.imgur.com/G7i5GJK.png"></p>
-<h2 id="安裝-Node-js"><a href="#安裝-Node-js" class="headerlink" title="安裝 Node.js"></a>安裝 Node.js</h2><p>目前有許多前端開發環境都是基於 Node.js，如 Gulp、Webpack、Parcel…，或是任何主流框架（Vue、React、Angular）的 CLI 也都是基於此服務。本次要介紹的 Vue Cli 自然也不例外。</p>
-<p>進入官網安裝 <a href="https://nodejs.org/en/">Node.js</a>，請打開終端機或命令提示字元，輸入 <code>node -v</code> 後按 Enter，看是否有顯示版本號。</p>
-<p><img src="https://i.imgur.com/tMn6b6n.gif"></p>
-<blockquote>
-<p>Mac 請按 command+空白鍵，輸入「terminal」打開終端機<br>Win 請按 開始 &gt; 執行 &gt; 輸入「cmd」打開命令提示字元<br>Win10 執行視窗快速鍵為 win + R:</p>
-</blockquote>
-<p><img src="https://i.imgur.com/xM3UOZG.jpg"></p>
-<p><img src="https://i.imgur.com/fEKbeaR.png"></p>
-<p>在版本號較新的 Win10 也可在左下搜尋欄輸入 cmd 打開命令提示字元:</p>
-<p><img src="https://i.imgur.com/UsXljox.jpg"></p>
-<p>請確保 Node.js 在第 9 版以上（官方建議：<code>8.11.0+</code>）。</p>
-<h2 id="Vue-CLI-安裝"><a href="#Vue-CLI-安裝" class="headerlink" title="Vue CLI 安裝"></a>Vue CLI 安裝</h2><p><img src="https://i.imgur.com/6uhIFx9.png"><br><code>npm install -g @vue/cli</code> 是使用全域的環境建立vue。</p>
-<p><img src="https://i.imgur.com/yMyJDBy.png"><br>到了這裡基本上Vue CLI就已經下載完成，Vue CLI的運行方式有兩種，第一種是使用指令的方式終端機(terminal)，另一種是使用vue ui的方式，在這裡我們使用ui的方式來運行。</p>
-<p><img src="https://i.imgur.com/govrlEi.png"></p>
-<p>第一次開發的話進來基本上不會有內容，再來點擊新增</p>
-<p><img src="https://i.imgur.com/qcddG6a.png"></p>
-<p><img src="https://i.imgur.com/WuZKKWy.png"></p>
-<p><img src="https://i.imgur.com/EFgn5e4.png"></p>
-<p><img src="https://i.imgur.com/W2SUt8U.png"><br>這邊是課程建議開啟的功能:</p>
-<p>Babel:在撰寫js的時候很常使用ES6的語法，為了確保這些語法在所有的瀏覽器能夠正確運行。</p>
-<p>TypeScript: js的預處理器。</p>
-<p>Router:建議直接在Vue CLI的部分直接啟用，在之後使用上也比較方便，會直接給一個初始的loader環境，以後實作就不用手動開啟。</p>
-<p>Vuex:資料狀態管理的工具</p>
-<p>CSS Pre-processors:CSS的預處理器。</p>
-<p>Linter/Formatter:檢查程式碼有沒有排整齊，建議開啟。</p>
-<p>最後面兩個是測試工具</p>
-<p><img src="https://i.imgur.com/h6IsXJ9.png"></p>
-<p>History Mode 切記不要開啟，當開啟之後呢，私服器必須做額外的設定才能運行(開了老師不會幫我們改作業)。<br><img src="https://i.imgur.com/TBBnPmj.png"><br>直接新增不儲存</p>
-<p><img src="https://i.imgur.com/ry3yPxI.png"><br>開發使用的話大多使用前兩個</p>
-<p><img src="https://i.imgur.com/yw5EEs9.png"><br>node_modules:這是我們所安裝的套件包含sass(scss)、.vue檔案這些功能都是安裝在這裡</p>
-<p>public:這個資料夾是公開的資料夾，這個資料夾的內容都不會被編譯，像是.png、.jpg的檔案就很適合放在這裡面</p>
-<p><img src="https://i.imgur.com/HBll11c.png"><br>雖然不會被編譯，但index.html呢實際上編譯的時候，會做一些些調整，像我們編譯完會進行一些插入，css、js就會插入到html裡面</p>
-<p><img src="https://i.imgur.com/Vj11447.png"><br>再來我們還會有更目錄下的檔案，就是我們運行的環境</p>
-<p>package.json:安裝套件所記錄的檔案</p>
-<h2 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h2><p><img src="https://i.imgur.com/5k2b0gV.png"></p>
-<p>主要是放在src的資料夾裡，main.js是我們的主要檔案，所有的檔案都會跟它產生關聯</p>
-<p><img src="https://i.imgur.com/Wyybx6I.png"></p>
-<p><img src="https://i.imgur.com/M42gXXc.png"></p>
-<p>會看到vue、App.vue和router與main.js產生關聯，而router裡有Home跟About的頁面產生關聯。<br><img src="https://i.imgur.com/h1nKHlZ.png"><br>Home.vue跟About.vue都是一個完整的頁面<br><img src="https://i.imgur.com/zwu1aGG.png"><br>再來說說component資料夾，這是在我們主頁面下的小元件，像是這些就能掛載到Home.vue和About.vue頁面上，再由路由載進來，最後掛載到main.js上。</p>
-<p>如果我們要撰寫js、css(sass)的話我們會寫在assets的資料夾內。</p>
-<p>最後透過編譯，會編譯成輸出的檔案例如:public資料夾裡的index.html，使用ui裡的build建立dist檔案，注意這裡dist檔案無法直接開啟，必須使用webServer開啟。</p>
-]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue.js</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CSS 選擇器中加號(+)和波浪號(~)</title>
     <url>/2021/02/14/CSS%20%E9%81%B8%E6%93%87%E5%99%A8%E4%B8%AD%E5%8A%A0%E8%99%9F%EF%BC%88+%EF%BC%89%E5%92%8C%E5%8F%96%E4%BB%A3%E7%AC%A6%E8%99%9F%EF%BC%8F%E6%B3%A2%E6%B5%AA%E8%99%9F%EF%BC%88~%EF%BC%89%E7%9A%84%E6%84%8F%E6%80%9D/</url>
     <content><![CDATA[<h1 id="CSS中的加號"><a href="#CSS中的加號" class="headerlink" title="CSS中的加號(+)"></a>CSS中的加號(+)</h1><p>讓我們先來看一下加號，加號影響的是同一階層（siblings）的標籤，例如，div + p指的是直接影響到div後的p，而div和p是屬於同一層的<br>為了方便大家理解，我們直接來看一下範例吧！</p>
@@ -136,56 +76,6 @@
       </categories>
       <tags>
         <tag>css</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>第一週 1 px 也不差的版型控制術</title>
-    <url>/2021/02/14/%E5%85%AD%E8%A7%92%E5%AD%B8%E9%99%A2%E5%88%87%E7%89%88%E7%9B%B4%E6%92%AD%E7%8F%AD%E7%AC%AC%E4%B8%80%E5%91%A8/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在2020年的1月入伍，在入伍的期間也開始為自己的未來做打算，在之前也是上六角學院的課程，<br>也陸續買了很多相關課程，因為也不知道什麼時候進去蹲，自己的計畫一直沒有實現，在某一天晚<br>上手機看到通知點進去看，看到了這個之後~</p>
-<p><img src="https://i.imgur.com/DYJUGFA.png"></p>
-<a id="more"></a>
-<p>休假回去立馬下單，自己也稍微思考了一下，八周的課程，我每周回去還有時間上課，而且距離退伍也<br>快了，自己也趁這個機會好好訓練自己一波。</p>
-<h1 id="第一週-1-px-也不差的版型控制術"><a href="#第一週-1-px-也不差的版型控制術" class="headerlink" title="第一週 1 px 也不差的版型控制術"></a>第一週 1 px 也不差的版型控制術</h1><p>為什麼叫做 1 px 也不差的版型控制術呢，簡單來說就是透過這堂課程了解網頁的結構，包括圖片產生的<br>微小差距，讓爾後在切版的時候更注意這些細節~~</p>
-<p><img src="https://i.imgur.com/7Nqt0Tq.png"></p>
-<h1 id="建立環境"><a href="#建立環境" class="headerlink" title="建立環境"></a>建立環境</h1><p>在這裡課程有推薦一個非常好用的東西，叫做 Emmet，我們透過它可以節省很多切版網頁的時間</p>
-<blockquote>
-<p><a href="https://docs.emmet.io/cheat-sheet/">emmet 指令大全</a></p>
-</blockquote>
-<p>再來我們要介紹的是網頁結構，網頁可以切分為容器與元素，然後元素又分為區塊元素及行內元素</p>
-<p>究竟甚麼是區塊元素及行內元素呢?</p>
-<blockquote>
-<p>CSS規範規定，每个元素都有display屬性，每個元素都有默認的display值，如div的display默認值为&gt; “block”，則為“區塊”元素；span默認display屬性值为“inline”，是“行内”元素。</p>
-</blockquote>
-<h2 id="區塊元素"><a href="#區塊元素" class="headerlink" title="區塊元素"></a>區塊元素</h2><p>1.區塊(block)元素會另起一行<br>2.會盡可能撐滿父元素<br>3.可以設定寬高</p>
-<p><img src="https://i.imgur.com/Kn7FCak.png"></p>
-<p>區塊元素常見包括:<br>div、p、h1~h6、<br>ul、ol、li、<br>dl、dt、dd、<br>form、table、hr、<br>blockquote 、<br>address、menu、pre…..等等</p>
-<h2 id="行內元素"><a href="#行內元素" class="headerlink" title="行內元素"></a>行內元素</h2><p>1.和其他元素都在一行上，相臨的行内元素会排列在同一行，<br> 直到一行排不下，才會換行，其寬度隨元素的内容而變化。<br>2.設置寬高無效，只能由内容撑起来，即行内元素設置width，height屬性無效。<br>3.設置上下margin、padding无效，左右padding 、margin有效<br>4.水平方向的padding-left 、padding-right、margin-left、margin-right都<br> 會產生效果，但上下方向的padding-top、padding-bottom、margin-top 、<br> margin-bottom不會產生邊距效果。</p>
-<p><img src="https://i.imgur.com/zmwS4qn.png"></p>
-<p>行內元素常見包括:<br>span、em、i、b、strong、a、img、input、br、select、textarea、q、bdo、sub、sup…等等</p>
-<h2 id="display-inline-block"><a href="#display-inline-block" class="headerlink" title="display:inline-block"></a>display:inline-block</h2><p>在這邊也介紹 <strong>display:inline-block</strong></p>
-<p>以inline的方式呈現，但同時擁有block的屬性<br>可設定元素的寬高/margin/padding<br>可水平排列</p>
-<p><img src="https://i.imgur.com/1fKGswX.png"></p>
-<p>可以發現設定display:inline-block 後，即可同時擁有block可設定寬高的屬性，但其排版仍像inline屬性，並不會向右占滿整個容器。</p>
-<p>以上範例圖，都可以在以下codepen試試看哦</p>
-<iframe height="265" style="width: 100%;" scrolling="no" title="區塊元素與行內元素" src="https://codepen.io/pvzfeusk/embed/dyOvNjp?height=265&theme-id=dark&default-tab=html,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href='https://codepen.io/pvzfeusk/pen/dyOvNjp'>區塊元素與行內元素</a> by 胡謦麟
-  (<a href='https://codepen.io/pvzfeusk'>@pvzfeusk</a>) on <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-<h1 id="CSS-Reset"><a href="#CSS-Reset" class="headerlink" title="CSS Reset"></a>CSS Reset</h1><p>當剛開始撰寫網頁的時候，會發現自己的網頁有些許的跑版，其實那是網頁的預設樣式，這時候就會需要<br>CSS Reset 來清楚網頁預設樣式，CSS Reset又有分好幾種，比較常見的就是 CSS Reset 與 CSS normalize。</p>
-<p><img src="https://i.imgur.com/YVcM2xy.png"></p>
-<h2 id="CSS-Reset-1"><a href="#CSS-Reset-1" class="headerlink" title="CSS Reset"></a>CSS Reset</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">html</span>, <span class="selector-tag">body</span>, <span class="selector-tag">div</span>, <span class="selector-tag">span</span>, <span class="selector-tag">applet</span>, <span class="selector-tag">object</span>, <span class="selector-tag">iframe</span>,</span><br><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span>, <span class="selector-tag">h4</span>, <span class="selector-tag">h5</span>, <span class="selector-tag">h6</span>, <span class="selector-tag">p</span>, <span class="selector-tag">blockquote</span>, <span class="selector-tag">pre</span>,</span><br><span class="line"><span class="selector-tag">a</span>, <span class="selector-tag">abbr</span>, <span class="selector-tag">acronym</span>, <span class="selector-tag">address</span>, <span class="selector-tag">big</span>, <span class="selector-tag">cite</span>, <span class="selector-tag">code</span>,</span><br><span class="line"><span class="selector-tag">del</span>, <span class="selector-tag">dfn</span>, <span class="selector-tag">em</span>, <span class="selector-tag">font</span>, <span class="selector-tag">img</span>, <span class="selector-tag">ins</span>, <span class="selector-tag">kbd</span>, <span class="selector-tag">q</span>, <span class="selector-tag">s</span>, <span class="selector-tag">samp</span>,</span><br><span class="line"><span class="selector-tag">small</span>, <span class="selector-tag">strike</span>, <span class="selector-tag">strong</span>, <span class="selector-tag">sub</span>, <span class="selector-tag">sup</span>, <span class="selector-tag">tt</span>, <span class="selector-tag">var</span>,</span><br><span class="line"><span class="selector-tag">dl</span>, <span class="selector-tag">dt</span>, <span class="selector-tag">dd</span>, <span class="selector-tag">ol</span>, <span class="selector-tag">ul</span>, <span class="selector-tag">li</span>,</span><br><span class="line"><span class="selector-tag">fieldset</span>, <span class="selector-tag">form</span>, <span class="selector-tag">label</span>, <span class="selector-tag">legend</span>,</span><br><span class="line"><span class="selector-tag">table</span>, <span class="selector-tag">caption</span>, <span class="selector-tag">tbody</span>, <span class="selector-tag">tfoot</span>, <span class="selector-tag">thead</span>, <span class="selector-tag">tr</span>, <span class="selector-tag">th</span>, <span class="selector-tag">td</span> &#123;</span><br><span class="line">	<span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">border</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">outline</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">font-weight</span>: inherit;</span><br><span class="line">	<span class="attribute">font-style</span>: inherit;</span><br><span class="line">	<span class="attribute">font-size</span>: <span class="number">100%</span>;</span><br><span class="line">	<span class="attribute">font-family</span>: inherit;</span><br><span class="line">	<span class="attribute">vertical-align</span>: baseline;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* remember to define focus styles! */</span></span><br><span class="line"><span class="selector-pseudo">:focus</span> &#123;</span><br><span class="line">	<span class="attribute">outline</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">	<span class="attribute">line-height</span>: <span class="number">1</span>;</span><br><span class="line">	<span class="attribute">color</span>: black;</span><br><span class="line">	<span class="attribute">background</span>: white;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">ol</span>, <span class="selector-tag">ul</span> &#123;</span><br><span class="line">	<span class="attribute">list-style</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* tables still need &#x27;cellspacing=&quot;0&quot;&#x27; in the markup */</span></span><br><span class="line"><span class="selector-tag">table</span> &#123;</span><br><span class="line">	<span class="attribute">border-collapse</span>: separate;</span><br><span class="line">	<span class="attribute">border-spacing</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">caption</span>, <span class="selector-tag">th</span>, <span class="selector-tag">td</span> &#123;</span><br><span class="line">	<span class="attribute">text-align</span>: left;</span><br><span class="line">	<span class="attribute">font-weight</span>: normal;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">blockquote</span><span class="selector-pseudo">:before</span>, <span class="selector-tag">blockquote</span><span class="selector-pseudo">:after</span>,</span><br><span class="line"><span class="selector-tag">q</span><span class="selector-pseudo">:before</span>, <span class="selector-tag">q</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">	<span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">blockquote</span>, <span class="selector-tag">q</span> &#123;</span><br><span class="line">	<span class="attribute">quotes</span>: <span class="string">&quot;&quot;</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>做法是把所有瀏覽器最不一致的地方強制歸 0，可以看到最一開始那一大串 html tag 的 margin、padding、border、outline 全都設為 0</p>
-<p>優點是統整、重置了各個瀏覽器的樣式設定。<br>缺點是必須全部重新做設定，比較沒有彈性，而且在使用開發者工具時會看到一大坨的繼承鏈(inheritance chain)。</p>
-<h2 id="CSS-Normalize"><a href="#CSS-Normalize" class="headerlink" title="CSS Normalize"></a>CSS Normalize</h2><p>因為 reset.css 重置了各個瀏覽器的樣式設定，使得有些有用、常用標籤的默認樣式必須要重新設定，因為這個問題，有人開發出了 normalize.css，典型的 Bootstrap 就是使用這款 CSS Reset。</p>
-<p>保留有用的瀏覽器默認設置，而不是將其刪除。<br>為廣泛的 HTML 元素提供一般化的樣式。<br>修正瀏覽器的 Bug 與不一致。<br>透過微妙的改善提高可用性。<br>有詳細的文檔來解釋代碼。(每個樣式都有註解是處理什麼問題。)<br>最大的特色就是保留原本預設 HTML 標籤的樣式，僅針對不同瀏覽器與各版本間不相容的標籤進行些微調整。</p>
-]]></content>
-      <categories>
-        <category>六角切版直播班</category>
-      </categories>
-      <tags>
-        <tag>html css</tag>
       </tags>
   </entry>
   <entry>
@@ -524,6 +414,116 @@
       </categories>
       <tags>
         <tag>gulp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue Cli</title>
+    <url>/2020/11/04/hello-world/</url>
+    <content><![CDATA[<h1 id="Vue-Cli"><a href="#Vue-Cli" class="headerlink" title="Vue Cli"></a>Vue Cli</h1><p>圖一<br><img src="https://i.imgur.com/aNwSDtY.png"></p>
+<a id="more"></a>
+<p>圖二<br><img src="https://i.imgur.com/2M2CLCy.png"></p>
+<p>我們在開發的過程中，會使用很多的檔案，例如jpg、png檔案等等，我們也可能有撰寫javaScript程式碼，使用到ES6的語法，在比較舊的瀏覽器就沒辦法運行，我們也可能會撰寫sass或是scss這種預處理器，還有.vue的檔案，.vue的檔案簡單來說一個檔案就是一個元件，這個元件包含了html、js、css，把這三個都結合在一起在開發上也比較容易。<br>(圖二)左邊是我們撰寫的檔案，右邊則是輸出的可以運行的檔案，因為我們沒辦法直接讀取像是sass、scss、.vue，所以會建立一個main.js，把所有檔案都進行關聯，除此之外還會建立一個loader，它會把所有檔案都載進來，最後還有一個output輸出檔案的位子，Webpack要做的事情就是，把這些loader跟main.js產生關聯性，再藉由Webpack編譯，雖然左邊的檔案沒辦法直接運行它，但是進行編譯之後呢，輸出之後就是瀏覽器可以運行的版本。<br>圖三<br><img src="https://i.imgur.com/3YbT69U.png"></p>
+<p>簡單來說，Webpack就是把我們開發中使用的工具和套件全部整合在一起，並且使用npm的方式來運行。</p>
+<p><img src="https://i.imgur.com/Hwd3OXK.png"></p>
+<h2 id="SPA"><a href="#SPA" class="headerlink" title="SPA"></a>SPA</h2><p>簡單來說就是由前端模擬的路由，那麼(路由)我們可以想像成一個網址，目前我們看到的網頁都是由後端決定的路由，SPA呢就是由前端所決定的路由，會在/後面加上#字號，#字號後面的user，就是我們實際運行的網址，實際上呢也只會切換#字號後面的網址，頁面也會跟著做更換；通常後端決定的路由在網頁切換的時候會有一個閃爍的感覺，如果使用前端決定的路由，更能提升使用者體驗<br><img src="https://i.imgur.com/0I2f0yJ.png"></p>
+<p><img src="https://i.imgur.com/G7i5GJK.png"></p>
+<h2 id="安裝-Node-js"><a href="#安裝-Node-js" class="headerlink" title="安裝 Node.js"></a>安裝 Node.js</h2><p>目前有許多前端開發環境都是基於 Node.js，如 Gulp、Webpack、Parcel…，或是任何主流框架（Vue、React、Angular）的 CLI 也都是基於此服務。本次要介紹的 Vue Cli 自然也不例外。</p>
+<p>進入官網安裝 <a href="https://nodejs.org/en/">Node.js</a>，請打開終端機或命令提示字元，輸入 <code>node -v</code> 後按 Enter，看是否有顯示版本號。</p>
+<p><img src="https://i.imgur.com/tMn6b6n.gif"></p>
+<blockquote>
+<p>Mac 請按 command+空白鍵，輸入「terminal」打開終端機<br>Win 請按 開始 &gt; 執行 &gt; 輸入「cmd」打開命令提示字元<br>Win10 執行視窗快速鍵為 win + R:</p>
+</blockquote>
+<p><img src="https://i.imgur.com/xM3UOZG.jpg"></p>
+<p><img src="https://i.imgur.com/fEKbeaR.png"></p>
+<p>在版本號較新的 Win10 也可在左下搜尋欄輸入 cmd 打開命令提示字元:</p>
+<p><img src="https://i.imgur.com/UsXljox.jpg"></p>
+<p>請確保 Node.js 在第 9 版以上（官方建議：<code>8.11.0+</code>）。</p>
+<h2 id="Vue-CLI-安裝"><a href="#Vue-CLI-安裝" class="headerlink" title="Vue CLI 安裝"></a>Vue CLI 安裝</h2><p><img src="https://i.imgur.com/6uhIFx9.png"><br><code>npm install -g @vue/cli</code> 是使用全域的環境建立vue。</p>
+<p><img src="https://i.imgur.com/yMyJDBy.png"><br>到了這裡基本上Vue CLI就已經下載完成，Vue CLI的運行方式有兩種，第一種是使用指令的方式終端機(terminal)，另一種是使用vue ui的方式，在這裡我們使用ui的方式來運行。</p>
+<p><img src="https://i.imgur.com/govrlEi.png"></p>
+<p>第一次開發的話進來基本上不會有內容，再來點擊新增</p>
+<p><img src="https://i.imgur.com/qcddG6a.png"></p>
+<p><img src="https://i.imgur.com/WuZKKWy.png"></p>
+<p><img src="https://i.imgur.com/EFgn5e4.png"></p>
+<p><img src="https://i.imgur.com/W2SUt8U.png"><br>這邊是課程建議開啟的功能:</p>
+<p>Babel:在撰寫js的時候很常使用ES6的語法，為了確保這些語法在所有的瀏覽器能夠正確運行。</p>
+<p>TypeScript: js的預處理器。</p>
+<p>Router:建議直接在Vue CLI的部分直接啟用，在之後使用上也比較方便，會直接給一個初始的loader環境，以後實作就不用手動開啟。</p>
+<p>Vuex:資料狀態管理的工具</p>
+<p>CSS Pre-processors:CSS的預處理器。</p>
+<p>Linter/Formatter:檢查程式碼有沒有排整齊，建議開啟。</p>
+<p>最後面兩個是測試工具</p>
+<p><img src="https://i.imgur.com/h6IsXJ9.png"></p>
+<p>History Mode 切記不要開啟，當開啟之後呢，私服器必須做額外的設定才能運行(開了老師不會幫我們改作業)。<br><img src="https://i.imgur.com/TBBnPmj.png"><br>直接新增不儲存</p>
+<p><img src="https://i.imgur.com/ry3yPxI.png"><br>開發使用的話大多使用前兩個</p>
+<p><img src="https://i.imgur.com/yw5EEs9.png"><br>node_modules:這是我們所安裝的套件包含sass(scss)、.vue檔案這些功能都是安裝在這裡</p>
+<p>public:這個資料夾是公開的資料夾，這個資料夾的內容都不會被編譯，像是.png、.jpg的檔案就很適合放在這裡面</p>
+<p><img src="https://i.imgur.com/HBll11c.png"><br>雖然不會被編譯，但index.html呢實際上編譯的時候，會做一些些調整，像我們編譯完會進行一些插入，css、js就會插入到html裡面</p>
+<p><img src="https://i.imgur.com/Vj11447.png"><br>再來我們還會有更目錄下的檔案，就是我們運行的環境</p>
+<p>package.json:安裝套件所記錄的檔案</p>
+<h2 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h2><p><img src="https://i.imgur.com/5k2b0gV.png"></p>
+<p>主要是放在src的資料夾裡，main.js是我們的主要檔案，所有的檔案都會跟它產生關聯</p>
+<p><img src="https://i.imgur.com/Wyybx6I.png"></p>
+<p><img src="https://i.imgur.com/M42gXXc.png"></p>
+<p>會看到vue、App.vue和router與main.js產生關聯，而router裡有Home跟About的頁面產生關聯。<br><img src="https://i.imgur.com/h1nKHlZ.png"><br>Home.vue跟About.vue都是一個完整的頁面<br><img src="https://i.imgur.com/zwu1aGG.png"><br>再來說說component資料夾，這是在我們主頁面下的小元件，像是這些就能掛載到Home.vue和About.vue頁面上，再由路由載進來，最後掛載到main.js上。</p>
+<p>如果我們要撰寫js、css(sass)的話我們會寫在assets的資料夾內。</p>
+<p>最後透過編譯，會編譯成輸出的檔案例如:public資料夾裡的index.html，使用ui裡的build建立dist檔案，注意這裡dist檔案無法直接開啟，必須使用webServer開啟。</p>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue.js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>第一週 1 px 也不差的版型控制術</title>
+    <url>/2021/02/14/%E5%85%AD%E8%A7%92%E5%AD%B8%E9%99%A2%E5%88%87%E7%89%88%E7%9B%B4%E6%92%AD%E7%8F%AD%E7%AC%AC%E4%B8%80%E5%91%A8/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在2020年的1月入伍，在入伍的期間也開始為自己的未來做打算，在之前也是上六角學院的課程，<br>也陸續買了很多相關課程，因為也不知道什麼時候進去蹲，自己的計畫一直沒有實現，在某一天晚<br>上手機看到通知點進去看，看到了這個之後~</p>
+<p><img src="https://i.imgur.com/DYJUGFA.png"></p>
+<a id="more"></a>
+<p>休假回去立馬下單，自己也稍微思考了一下，八周的課程，我每周回去還有時間上課，而且距離退伍也<br>快了，自己也趁這個機會好好訓練自己一波。</p>
+<h1 id="第一週-1-px-也不差的版型控制術"><a href="#第一週-1-px-也不差的版型控制術" class="headerlink" title="第一週 1 px 也不差的版型控制術"></a>第一週 1 px 也不差的版型控制術</h1><p>為什麼叫做 1 px 也不差的版型控制術呢，簡單來說就是透過這堂課程了解網頁的結構，包括圖片產生的<br>微小差距，讓爾後在切版的時候更注意這些細節~~</p>
+<p><img src="https://i.imgur.com/7Nqt0Tq.png"></p>
+<h1 id="建立環境"><a href="#建立環境" class="headerlink" title="建立環境"></a>建立環境</h1><p>在這裡課程有推薦一個非常好用的東西，叫做 Emmet，我們透過它可以節省很多切版網頁的時間</p>
+<blockquote>
+<p><a href="https://docs.emmet.io/cheat-sheet/">emmet 指令大全</a></p>
+</blockquote>
+<p>再來我們要介紹的是網頁結構，網頁可以切分為容器與元素，然後元素又分為區塊元素及行內元素</p>
+<p>究竟甚麼是區塊元素及行內元素呢?</p>
+<blockquote>
+<p>CSS規範規定，每个元素都有display屬性，每個元素都有默認的display值，如div的display默認值为&gt; “block”，則為“區塊”元素；span默認display屬性值为“inline”，是“行内”元素。</p>
+</blockquote>
+<h2 id="區塊元素"><a href="#區塊元素" class="headerlink" title="區塊元素"></a>區塊元素</h2><p>1.區塊(block)元素會另起一行<br>2.會盡可能撐滿父元素<br>3.可以設定寬高</p>
+<p><img src="https://i.imgur.com/Kn7FCak.png"></p>
+<p>區塊元素常見包括:<br>div、p、h1~h6、<br>ul、ol、li、<br>dl、dt、dd、<br>form、table、hr、<br>blockquote 、<br>address、menu、pre…..等等</p>
+<h2 id="行內元素"><a href="#行內元素" class="headerlink" title="行內元素"></a>行內元素</h2><p>1.和其他元素都在一行上，相臨的行内元素会排列在同一行，<br> 直到一行排不下，才會換行，其寬度隨元素的内容而變化。<br>2.設置寬高無效，只能由内容撑起来，即行内元素設置width，height屬性無效。<br>3.設置上下margin、padding无效，左右padding 、margin有效<br>4.水平方向的padding-left 、padding-right、margin-left、margin-right都<br> 會產生效果，但上下方向的padding-top、padding-bottom、margin-top 、<br> margin-bottom不會產生邊距效果。</p>
+<p><img src="https://i.imgur.com/zmwS4qn.png"></p>
+<p>行內元素常見包括:<br>span、em、i、b、strong、a、img、input、br、select、textarea、q、bdo、sub、sup…等等</p>
+<h2 id="display-inline-block"><a href="#display-inline-block" class="headerlink" title="display:inline-block"></a>display:inline-block</h2><p>在這邊也介紹 <strong>display:inline-block</strong></p>
+<p>以inline的方式呈現，但同時擁有block的屬性<br>可設定元素的寬高/margin/padding<br>可水平排列</p>
+<p><img src="https://i.imgur.com/1fKGswX.png"></p>
+<p>可以發現設定display:inline-block 後，即可同時擁有block可設定寬高的屬性，但其排版仍像inline屬性，並不會向右占滿整個容器。</p>
+<p>以上範例圖，都可以在以下codepen試試看哦</p>
+<iframe height="265" style="width: 100%;" scrolling="no" title="區塊元素與行內元素" src="https://codepen.io/pvzfeusk/embed/dyOvNjp?height=265&theme-id=dark&default-tab=html,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/pvzfeusk/pen/dyOvNjp'>區塊元素與行內元素</a> by 胡謦麟
+  (<a href='https://codepen.io/pvzfeusk'>@pvzfeusk</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+<h1 id="CSS-Reset"><a href="#CSS-Reset" class="headerlink" title="CSS Reset"></a>CSS Reset</h1><p>當剛開始撰寫網頁的時候，會發現自己的網頁有些許的跑版，其實那是網頁的預設樣式，這時候就會需要<br>CSS Reset 來清楚網頁預設樣式，CSS Reset又有分好幾種，比較常見的就是 CSS Reset 與 CSS normalize。</p>
+<p><img src="https://i.imgur.com/YVcM2xy.png"></p>
+<h2 id="CSS-Reset-1"><a href="#CSS-Reset-1" class="headerlink" title="CSS Reset"></a>CSS Reset</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">html</span>, <span class="selector-tag">body</span>, <span class="selector-tag">div</span>, <span class="selector-tag">span</span>, <span class="selector-tag">applet</span>, <span class="selector-tag">object</span>, <span class="selector-tag">iframe</span>,</span><br><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span>, <span class="selector-tag">h4</span>, <span class="selector-tag">h5</span>, <span class="selector-tag">h6</span>, <span class="selector-tag">p</span>, <span class="selector-tag">blockquote</span>, <span class="selector-tag">pre</span>,</span><br><span class="line"><span class="selector-tag">a</span>, <span class="selector-tag">abbr</span>, <span class="selector-tag">acronym</span>, <span class="selector-tag">address</span>, <span class="selector-tag">big</span>, <span class="selector-tag">cite</span>, <span class="selector-tag">code</span>,</span><br><span class="line"><span class="selector-tag">del</span>, <span class="selector-tag">dfn</span>, <span class="selector-tag">em</span>, <span class="selector-tag">font</span>, <span class="selector-tag">img</span>, <span class="selector-tag">ins</span>, <span class="selector-tag">kbd</span>, <span class="selector-tag">q</span>, <span class="selector-tag">s</span>, <span class="selector-tag">samp</span>,</span><br><span class="line"><span class="selector-tag">small</span>, <span class="selector-tag">strike</span>, <span class="selector-tag">strong</span>, <span class="selector-tag">sub</span>, <span class="selector-tag">sup</span>, <span class="selector-tag">tt</span>, <span class="selector-tag">var</span>,</span><br><span class="line"><span class="selector-tag">dl</span>, <span class="selector-tag">dt</span>, <span class="selector-tag">dd</span>, <span class="selector-tag">ol</span>, <span class="selector-tag">ul</span>, <span class="selector-tag">li</span>,</span><br><span class="line"><span class="selector-tag">fieldset</span>, <span class="selector-tag">form</span>, <span class="selector-tag">label</span>, <span class="selector-tag">legend</span>,</span><br><span class="line"><span class="selector-tag">table</span>, <span class="selector-tag">caption</span>, <span class="selector-tag">tbody</span>, <span class="selector-tag">tfoot</span>, <span class="selector-tag">thead</span>, <span class="selector-tag">tr</span>, <span class="selector-tag">th</span>, <span class="selector-tag">td</span> &#123;</span><br><span class="line">	<span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">border</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">outline</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">font-weight</span>: inherit;</span><br><span class="line">	<span class="attribute">font-style</span>: inherit;</span><br><span class="line">	<span class="attribute">font-size</span>: <span class="number">100%</span>;</span><br><span class="line">	<span class="attribute">font-family</span>: inherit;</span><br><span class="line">	<span class="attribute">vertical-align</span>: baseline;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* remember to define focus styles! */</span></span><br><span class="line"><span class="selector-pseudo">:focus</span> &#123;</span><br><span class="line">	<span class="attribute">outline</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">	<span class="attribute">line-height</span>: <span class="number">1</span>;</span><br><span class="line">	<span class="attribute">color</span>: black;</span><br><span class="line">	<span class="attribute">background</span>: white;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">ol</span>, <span class="selector-tag">ul</span> &#123;</span><br><span class="line">	<span class="attribute">list-style</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* tables still need &#x27;cellspacing=&quot;0&quot;&#x27; in the markup */</span></span><br><span class="line"><span class="selector-tag">table</span> &#123;</span><br><span class="line">	<span class="attribute">border-collapse</span>: separate;</span><br><span class="line">	<span class="attribute">border-spacing</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">caption</span>, <span class="selector-tag">th</span>, <span class="selector-tag">td</span> &#123;</span><br><span class="line">	<span class="attribute">text-align</span>: left;</span><br><span class="line">	<span class="attribute">font-weight</span>: normal;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">blockquote</span><span class="selector-pseudo">:before</span>, <span class="selector-tag">blockquote</span><span class="selector-pseudo">:after</span>,</span><br><span class="line"><span class="selector-tag">q</span><span class="selector-pseudo">:before</span>, <span class="selector-tag">q</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">	<span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">blockquote</span>, <span class="selector-tag">q</span> &#123;</span><br><span class="line">	<span class="attribute">quotes</span>: <span class="string">&quot;&quot;</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>做法是把所有瀏覽器最不一致的地方強制歸 0，可以看到最一開始那一大串 html tag 的 margin、padding、border、outline 全都設為 0</p>
+<p>優點是統整、重置了各個瀏覽器的樣式設定。<br>缺點是必須全部重新做設定，比較沒有彈性，而且在使用開發者工具時會看到一大坨的繼承鏈(inheritance chain)。</p>
+<h2 id="CSS-Normalize"><a href="#CSS-Normalize" class="headerlink" title="CSS Normalize"></a>CSS Normalize</h2><p>因為 reset.css 重置了各個瀏覽器的樣式設定，使得有些有用、常用標籤的默認樣式必須要重新設定，因為這個問題，有人開發出了 normalize.css，典型的 Bootstrap 就是使用這款 CSS Reset。</p>
+<p>保留有用的瀏覽器默認設置，而不是將其刪除。<br>為廣泛的 HTML 元素提供一般化的樣式。<br>修正瀏覽器的 Bug 與不一致。<br>透過微妙的改善提高可用性。<br>有詳細的文檔來解釋代碼。(每個樣式都有註解是處理什麼問題。)<br>最大的特色就是保留原本預設 HTML 標籤的樣式，僅針對不同瀏覽器與各版本間不相容的標籤進行些微調整。</p>
+]]></content>
+      <categories>
+        <category>六角切版直播班</category>
+      </categories>
+      <tags>
+        <tag>html css</tag>
       </tags>
   </entry>
 </search>

@@ -81,21 +81,7 @@
 
   
   <url>
-    <loc>http://cinglin570.github.io.com/tags/Vue-js/</loc>
-    <lastmod>2022-04-24</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://cinglin570.github.io.com/tags/css/</loc>
-    <lastmod>2022-04-24</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://cinglin570.github.io.com/tags/html-css/</loc>
     <lastmod>2022-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -115,24 +101,24 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>http://cinglin570.github.io.com/tags/Vue-js/</loc>
+    <lastmod>2022-04-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://cinglin570.github.io.com/tags/html-css/</loc>
+    <lastmod>2022-04-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
-    <loc>http://cinglin570.github.io.com/categories/Vue/</loc>
-    <lastmod>2022-04-24</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://cinglin570.github.io.com/categories/css/</loc>
-    <lastmod>2022-04-24</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://cinglin570.github.io.com/categories/%E5%85%AD%E8%A7%92%E5%88%87%E7%89%88%E7%9B%B4%E6%92%AD%E7%8F%AD/</loc>
     <lastmod>2022-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -147,6 +133,20 @@
   
   <url>
     <loc>http://cinglin570.github.io.com/categories/gulp/</loc>
+    <lastmod>2022-04-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://cinglin570.github.io.com/categories/Vue/</loc>
+    <lastmod>2022-04-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://cinglin570.github.io.com/categories/%E5%85%AD%E8%A7%92%E5%88%87%E7%89%88%E7%9B%B4%E6%92%AD%E7%8F%AD/</loc>
     <lastmod>2022-04-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
