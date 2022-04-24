@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"cinglin570.github.io.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前言在2020年的1月入伍，在入伍的期間也開始為自己的未來做打算，在之前也是上六角學院的課程，也陸續買了很多相關課程，因為也不知道什麼時候進去蹲，自己的計畫一直沒有實現，在某一天晚上手機看到通知點進去看，看到了這個之後~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第一週 1 px 也不差的版型控制術">
+<meta property="og:url" content="http://cinglin570.github.io.com/2021/02/14/%E5%85%AD%E8%A7%92%E5%AD%B8%E9%99%A2%E5%88%87%E7%89%88%E7%9B%B4%E6%92%AD%E7%8F%AD%E7%AC%AC%E4%B8%80%E5%91%A8/index.html">
+<meta property="og:site_name" content="CingLin Blog">
+<meta property="og:description" content="前言在2020年的1月入伍，在入伍的期間也開始為自己的未來做打算，在之前也是上六角學院的課程，也陸續買了很多相關課程，因為也不知道什麼時候進去蹲，自己的計畫一直沒有實現，在某一天晚上手機看到通知點進去看，看到了這個之後~">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/DYJUGFA.png">
+<meta property="og:image" content="https://i.imgur.com/7Nqt0Tq.png">
+<meta property="og:image" content="https://i.imgur.com/Kn7FCak.png">
+<meta property="og:image" content="https://i.imgur.com/zmwS4qn.png">
+<meta property="og:image" content="https://i.imgur.com/1fKGswX.png">
+<meta property="og:image" content="https://i.imgur.com/YVcM2xy.png">
+<meta property="article:published_time" content="2021-02-14T09:58:57.000Z">
+<meta property="article:modified_time" content="2021-02-15T13:46:07.595Z">
+<meta property="article:author" content="CingLin">
+<meta property="article:tag" content="html css">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/DYJUGFA.png">
+
+<link rel="canonical" href="http://cinglin570.github.io.com/2021/02/14/%E5%85%AD%E8%A7%92%E5%AD%B8%E9%99%A2%E5%88%87%E7%89%88%E7%9B%B4%E6%92%AD%E7%8F%AD%E7%AC%AC%E4%B8%80%E5%91%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>第一週 1 px 也不差的版型控制術 | CingLin Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXX-1 //UAID追蹤碼"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-XXXXXX-1 //UAID追蹤碼');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="CingLin Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">CingLin Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fas fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://cinglin570.github.io.com/2021/02/14/%E5%85%AD%E8%A7%92%E5%AD%B8%E9%99%A2%E5%88%87%E7%89%88%E7%9B%B4%E6%92%AD%E7%8F%AD%E7%AC%AC%E4%B8%80%E5%91%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.imgur.com/sTHh4ii.jpg">
+      <meta itemprop="name" content="CingLin">
+      <meta itemprop="description" content="沒有痛苦，沒有收穫">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CingLin Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          第一週 1 px 也不差的版型控制術
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-02-14 17:58:57" itemprop="dateCreated datePublished" datetime="2021-02-14T17:58:57+08:00">2021-02-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-15 21:46:07" itemprop="dateModified" datetime="2021-02-15T21:46:07+08:00">2021-02-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%85%AD%E8%A7%92%E5%88%87%E7%89%88%E7%9B%B4%E6%92%AD%E7%8F%AD/" itemprop="url" rel="index"><span itemprop="name">六角切版直播班</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2021/02/14/%E5%85%AD%E8%A7%92%E5%AD%B8%E9%99%A2%E5%88%87%E7%89%88%E7%9B%B4%E6%92%AD%E7%8F%AD%E7%AC%AC%E4%B8%80%E5%91%A8/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/02/14/六角學院切版直播班第一周/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在2020年的1月入伍，在入伍的期間也開始為自己的未來做打算，在之前也是上六角學院的課程，<br>也陸續買了很多相關課程，因為也不知道什麼時候進去蹲，自己的計畫一直沒有實現，在某一天晚<br>上手機看到通知點進去看，看到了這個之後~</p>
+<p><img src="https://i.imgur.com/DYJUGFA.png"></p>
+<a id="more"></a>
+<p>休假回去立馬下單，自己也稍微思考了一下，八周的課程，我每周回去還有時間上課，而且距離退伍也<br>快了，自己也趁這個機會好好訓練自己一波。</p>
+<h1 id="第一週-1-px-也不差的版型控制術"><a href="#第一週-1-px-也不差的版型控制術" class="headerlink" title="第一週 1 px 也不差的版型控制術"></a>第一週 1 px 也不差的版型控制術</h1><p>為什麼叫做 1 px 也不差的版型控制術呢，簡單來說就是透過這堂課程了解網頁的結構，包括圖片產生的<br>微小差距，讓爾後在切版的時候更注意這些細節~~</p>
+<p><img src="https://i.imgur.com/7Nqt0Tq.png"></p>
+<h1 id="建立環境"><a href="#建立環境" class="headerlink" title="建立環境"></a>建立環境</h1><p>在這裡課程有推薦一個非常好用的東西，叫做 Emmet，我們透過它可以節省很多切版網頁的時間</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.emmet.io/cheat-sheet/">emmet 指令大全</a></p>
+</blockquote>
+<p>再來我們要介紹的是網頁結構，網頁可以切分為容器與元素，然後元素又分為區塊元素及行內元素</p>
+<p>究竟甚麼是區塊元素及行內元素呢?</p>
+<blockquote>
+<p>CSS規範規定，每个元素都有display屬性，每個元素都有默認的display值，如div的display默認值为&gt; “block”，則為“區塊”元素；span默認display屬性值为“inline”，是“行内”元素。</p>
+</blockquote>
+<h2 id="區塊元素"><a href="#區塊元素" class="headerlink" title="區塊元素"></a>區塊元素</h2><p>1.區塊(block)元素會另起一行<br>2.會盡可能撐滿父元素<br>3.可以設定寬高</p>
+<p><img src="https://i.imgur.com/Kn7FCak.png"></p>
+<p>區塊元素常見包括:<br>div、p、h1~h6、<br>ul、ol、li、<br>dl、dt、dd、<br>form、table、hr、<br>blockquote 、<br>address、menu、pre…..等等</p>
+<h2 id="行內元素"><a href="#行內元素" class="headerlink" title="行內元素"></a>行內元素</h2><p>1.和其他元素都在一行上，相臨的行内元素会排列在同一行，<br> 直到一行排不下，才會換行，其寬度隨元素的内容而變化。<br>2.設置寬高無效，只能由内容撑起来，即行内元素設置width，height屬性無效。<br>3.設置上下margin、padding无效，左右padding 、margin有效<br>4.水平方向的padding-left 、padding-right、margin-left、margin-right都<br> 會產生效果，但上下方向的padding-top、padding-bottom、margin-top 、<br> margin-bottom不會產生邊距效果。</p>
+<p><img src="https://i.imgur.com/zmwS4qn.png"></p>
+<p>行內元素常見包括:<br>span、em、i、b、strong、a、img、input、br、select、textarea、q、bdo、sub、sup…等等</p>
+<h2 id="display-inline-block"><a href="#display-inline-block" class="headerlink" title="display:inline-block"></a>display:inline-block</h2><p>在這邊也介紹 <strong>display:inline-block</strong></p>
+<p>以inline的方式呈現，但同時擁有block的屬性<br>可設定元素的寬高/margin/padding<br>可水平排列</p>
+<p><img src="https://i.imgur.com/1fKGswX.png"></p>
+<p>可以發現設定display:inline-block 後，即可同時擁有block可設定寬高的屬性，但其排版仍像inline屬性，並不會向右占滿整個容器。</p>
+<p>以上範例圖，都可以在以下codepen試試看哦</p>
+<iframe height="265" style="width: 100%;" scrolling="no" title="區塊元素與行內元素" src="https://codepen.io/pvzfeusk/embed/dyOvNjp?height=265&theme-id=dark&default-tab=html,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href='https://codepen.io/pvzfeusk/pen/dyOvNjp'>區塊元素與行內元素</a> by 胡謦麟
+  (<a target="_blank" rel="noopener" href='https://codepen.io/pvzfeusk'>@pvzfeusk</a>) on <a target="_blank" rel="noopener" href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+<h1 id="CSS-Reset"><a href="#CSS-Reset" class="headerlink" title="CSS Reset"></a>CSS Reset</h1><p>當剛開始撰寫網頁的時候，會發現自己的網頁有些許的跑版，其實那是網頁的預設樣式，這時候就會需要<br>CSS Reset 來清楚網頁預設樣式，CSS Reset又有分好幾種，比較常見的就是 CSS Reset 與 CSS normalize。</p>
+<p><img src="https://i.imgur.com/YVcM2xy.png"></p>
+<h2 id="CSS-Reset-1"><a href="#CSS-Reset-1" class="headerlink" title="CSS Reset"></a>CSS Reset</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span>, <span class="selector-tag">body</span>, <span class="selector-tag">div</span>, <span class="selector-tag">span</span>, <span class="selector-tag">applet</span>, <span class="selector-tag">object</span>, <span class="selector-tag">iframe</span>,</span><br><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span>, <span class="selector-tag">h4</span>, <span class="selector-tag">h5</span>, <span class="selector-tag">h6</span>, <span class="selector-tag">p</span>, <span class="selector-tag">blockquote</span>, <span class="selector-tag">pre</span>,</span><br><span class="line"><span class="selector-tag">a</span>, <span class="selector-tag">abbr</span>, <span class="selector-tag">acronym</span>, <span class="selector-tag">address</span>, <span class="selector-tag">big</span>, <span class="selector-tag">cite</span>, <span class="selector-tag">code</span>,</span><br><span class="line"><span class="selector-tag">del</span>, <span class="selector-tag">dfn</span>, <span class="selector-tag">em</span>, <span class="selector-tag">font</span>, <span class="selector-tag">img</span>, <span class="selector-tag">ins</span>, <span class="selector-tag">kbd</span>, <span class="selector-tag">q</span>, <span class="selector-tag">s</span>, <span class="selector-tag">samp</span>,</span><br><span class="line"><span class="selector-tag">small</span>, <span class="selector-tag">strike</span>, <span class="selector-tag">strong</span>, <span class="selector-tag">sub</span>, <span class="selector-tag">sup</span>, <span class="selector-tag">tt</span>, <span class="selector-tag">var</span>,</span><br><span class="line"><span class="selector-tag">dl</span>, <span class="selector-tag">dt</span>, <span class="selector-tag">dd</span>, <span class="selector-tag">ol</span>, <span class="selector-tag">ul</span>, <span class="selector-tag">li</span>,</span><br><span class="line"><span class="selector-tag">fieldset</span>, <span class="selector-tag">form</span>, <span class="selector-tag">label</span>, <span class="selector-tag">legend</span>,</span><br><span class="line"><span class="selector-tag">table</span>, <span class="selector-tag">caption</span>, <span class="selector-tag">tbody</span>, <span class="selector-tag">tfoot</span>, <span class="selector-tag">thead</span>, <span class="selector-tag">tr</span>, <span class="selector-tag">th</span>, <span class="selector-tag">td</span> &#123;</span><br><span class="line">	<span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">border</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">outline</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">font-weight</span>: inherit;</span><br><span class="line">	<span class="attribute">font-style</span>: inherit;</span><br><span class="line">	<span class="attribute">font-size</span>: <span class="number">100%</span>;</span><br><span class="line">	<span class="attribute">font-family</span>: inherit;</span><br><span class="line">	<span class="attribute">vertical-align</span>: baseline;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* remember to define focus styles! */</span></span><br><span class="line"><span class="selector-pseudo">:focus</span> &#123;</span><br><span class="line">	<span class="attribute">outline</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">	<span class="attribute">line-height</span>: <span class="number">1</span>;</span><br><span class="line">	<span class="attribute">color</span>: black;</span><br><span class="line">	<span class="attribute">background</span>: white;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">ol</span>, <span class="selector-tag">ul</span> &#123;</span><br><span class="line">	<span class="attribute">list-style</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* tables still need &#x27;cellspacing=&quot;0&quot;&#x27; in the markup */</span></span><br><span class="line"><span class="selector-tag">table</span> &#123;</span><br><span class="line">	<span class="attribute">border-collapse</span>: separate;</span><br><span class="line">	<span class="attribute">border-spacing</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">caption</span>, <span class="selector-tag">th</span>, <span class="selector-tag">td</span> &#123;</span><br><span class="line">	<span class="attribute">text-align</span>: left;</span><br><span class="line">	<span class="attribute">font-weight</span>: normal;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">blockquote</span><span class="selector-pseudo">:before</span>, <span class="selector-tag">blockquote</span><span class="selector-pseudo">:after</span>,</span><br><span class="line"><span class="selector-tag">q</span><span class="selector-pseudo">:before</span>, <span class="selector-tag">q</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">	<span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">blockquote</span>, <span class="selector-tag">q</span> &#123;</span><br><span class="line">	<span class="attribute">quotes</span>: <span class="string">&quot;&quot;</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>做法是把所有瀏覽器最不一致的地方強制歸 0，可以看到最一開始那一大串 html tag 的 margin、padding、border、outline 全都設為 0</p>
+<p>優點是統整、重置了各個瀏覽器的樣式設定。<br>缺點是必須全部重新做設定，比較沒有彈性，而且在使用開發者工具時會看到一大坨的繼承鏈(inheritance chain)。</p>
+<h2 id="CSS-Normalize"><a href="#CSS-Normalize" class="headerlink" title="CSS Normalize"></a>CSS Normalize</h2><p>因為 reset.css 重置了各個瀏覽器的樣式設定，使得有些有用、常用標籤的默認樣式必須要重新設定，因為這個問題，有人開發出了 normalize.css，典型的 Bootstrap 就是使用這款 CSS Reset。</p>
+<p>保留有用的瀏覽器默認設置，而不是將其刪除。<br>為廣泛的 HTML 元素提供一般化的樣式。<br>修正瀏覽器的 Bug 與不一致。<br>透過微妙的改善提高可用性。<br>有詳細的文檔來解釋代碼。(每個樣式都有註解是處理什麼問題。)<br>最大的特色就是保留原本預設 HTML 標籤的樣式，僅針對不同瀏覽器與各版本間不相容的標籤進行些微調整。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/html-css/" rel="tag"># html css</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/02/14/CSS%E9%81%B8%E6%93%87%E5%99%A8%E4%B8%AD%E7%9A%84%E5%A4%A7%E6%96%BC%E6%98%AF%E4%BB%80%E9%BA%BC%E6%84%8F%E6%80%9D/" rel="prev" title="CSS 選擇器中大於符號是什麼意思?">
+      <i class="fa fa-chevron-left"></i> CSS 選擇器中大於符號是什麼意思?
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/02/24/githubpage/" rel="next" title="GitHub Pages 教學手冊">
+      GitHub Pages 教學手冊 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%80%B1-1-px-%E4%B9%9F%E4%B8%8D%E5%B7%AE%E7%9A%84%E7%89%88%E5%9E%8B%E6%8E%A7%E5%88%B6%E8%A1%93"><span class="nav-number">2.</span> <span class="nav-text">第一週 1 px 也不差的版型控制術</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E7%92%B0%E5%A2%83"><span class="nav-number">3.</span> <span class="nav-text">建立環境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%80%E5%A1%8A%E5%85%83%E7%B4%A0"><span class="nav-number">3.1.</span> <span class="nav-text">區塊元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%8C%E5%85%A7%E5%85%83%E7%B4%A0"><span class="nav-number">3.2.</span> <span class="nav-text">行內元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#display-inline-block"><span class="nav-number">3.3.</span> <span class="nav-text">display:inline-block</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS-Reset"><span class="nav-number">4.</span> <span class="nav-text">CSS Reset</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-Reset-1"><span class="nav-number">4.1.</span> <span class="nav-text">CSS Reset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-Normalize"><span class="nav-number">4.2.</span> <span class="nav-text">CSS Normalize</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="CingLin"
+      src="https://i.imgur.com/sTHh4ii.jpg">
+  <p class="site-author-name" itemprop="name">CingLin</p>
+  <div class="site-description" itemprop="description">沒有痛苦，沒有收穫</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fas fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">若要轉載文章，麻煩請保留原作者名稱與原始連結。</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://CingLin.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://cinglin570.github.io.com/2021/02/14/%E5%85%AD%E8%A7%92%E5%AD%B8%E9%99%A2%E5%88%87%E7%89%88%E7%9B%B4%E6%92%AD%E7%8F%AD%E7%AC%AC%E4%B8%80%E5%91%A8/";
+    this.page.identifier = "2021/02/14/六角學院切版直播班第一周/";
+    this.page.title = "第一週 1 px 也不差的版型控制術";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://CingLin.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
