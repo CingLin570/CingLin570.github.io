@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"cinglin570.github.io.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="🏅 Day 23自訂錯誤訊息我們可以另外新增自定義錯誤訊息的模組，在預期使用者可能會出錯的地方驗證錯誤">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js 直播班每日任務🏅 Day 23(自訂錯誤訊息)">
+<meta property="og:url" content="http://cinglin570.github.io.com/2022/05/13/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day23/index.html">
+<meta property="og:site_name" content="CingLin Blog">
+<meta property="og:description" content="🏅 Day 23自訂錯誤訊息我們可以另外新增自定義錯誤訊息的模組，在預期使用者可能會出錯的地方驗證錯誤">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/QtL8zEW.png">
+<meta property="article:published_time" content="2022-05-13T11:52:47.000Z">
+<meta property="article:modified_time" content="2022-05-13T11:54:24.715Z">
+<meta property="article:author" content="CingLin">
+<meta property="article:tag" content="Node.js MongoDB">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/QtL8zEW.png">
+
+<link rel="canonical" href="http://cinglin570.github.io.com/2022/05/13/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day23/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>Node.js 直播班每日任務🏅 Day 23(自訂錯誤訊息) | CingLin Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXX-1 //UAID追蹤碼"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-XXXXXX-1 //UAID追蹤碼');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="CingLin Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">CingLin Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fas fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://cinglin570.github.io.com/2022/05/13/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day23/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.imgur.com/sTHh4ii.jpg">
+      <meta itemprop="name" content="CingLin">
+      <meta itemprop="description" content="沒有痛苦，沒有收穫">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CingLin Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Node.js 直播班每日任務🏅 Day 23(自訂錯誤訊息)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2022-05-13 19:52:47 / 修改時間：19:54:24" itemprop="dateCreated datePublished" datetime="2022-05-13T19:52:47+08:00">2022-05-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node-js-%E7%9B%B4%E6%92%AD%E7%8F%AD-2022-%E6%98%A5%E5%AD%A3%E7%8F%AD/" itemprop="url" rel="index"><span itemprop="name">Node.js 直播班 - 2022 春季班</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/05/13/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day23/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/13/node春季直播班每日任務Day23/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="🏅-Day-23"><a href="#🏅-Day-23" class="headerlink" title="🏅 Day 23"></a>🏅 Day 23</h1><h2 id="自訂錯誤訊息"><a href="#自訂錯誤訊息" class="headerlink" title="自訂錯誤訊息"></a>自訂錯誤訊息</h2><p>我們可以另外新增自定義錯誤訊息的模組，在預期使用者可能會出錯的地方驗證錯誤</p>
+<a id="more"></a>
+<p><strong>範例</strong>（較完整範例可觀看此 <a target="_blank" rel="noopener" href="https://github.com/gonsakon/express-week4-sample/blob/week5/service/appError.js">GitHub</a>）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> appError = <span class="function">(<span class="params">httpStatus, errMessage, next</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> error = <span class="keyword">new</span> <span class="built_in">Error</span>(errMessage);</span><br><span class="line">    error.statusCode = httpStatus;</span><br><span class="line">    error.isOperational = <span class="literal">true</span>;</span><br><span class="line">    next(error);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = appError;</span><br></pre></td></tr></table></figure>
+
+<p>自訂一個 appError function，將狀態碼及自訂錯誤訊息及 next 參數傳到 function 中<br>使用 <code>new Error()</code> 建立 Error 物件，並設定 Error 回傳的資訊：<code>statusCode</code> <code>isOperational</code> ，其中 <code>isOperational</code> 代表是否為<strong>可預期</strong>的錯誤，因是自訂的錯誤，通常都會設定為 true（可預期）<br>最後使用 next() 將 Error 交給 app.js 中的錯誤處理 middleware 回傳錯誤訊息</p>
+<p><strong>error handler 範例</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// error handler</span></span><br><span class="line"><span class="comment">// 錯誤處理的 middleware 相較一般 middleware 會多一個 err 引數</span></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">err, req, res, next</span>) </span>&#123;</span><br><span class="line">  err.statusCode = err.statusCode || <span class="number">500</span>;</span><br><span class="line">  err.status = err.status || <span class="string">&#x27;error&#x27;</span>;</span><br><span class="line">  res.status(err.statusCode).json(&#123;</span><br><span class="line">    status: err.status,</span><br><span class="line">    message: err.message</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>使用情境(第六週 JWT)</strong><br>假設此路由 /posts 是已登入的會員才能造訪的路由，當接收到的 request 是未通過驗證，則可回傳「未登入」的回饋訊息</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">router.get(<span class="string">&#x27;/&#x27;</span>, handleErrorAsync(<span class="keyword">async</span>(req, res, next) =&gt;  &#123;</span><br><span class="line">  <span class="comment">// 自訂未通過登入驗證的錯誤</span></span><br><span class="line">  <span class="keyword">return</span> next(AppError(<span class="number">401</span>, <span class="string">&#x27;您並未登入&#x27;</span>, next));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> timeSort = req.query.timeSort == <span class="string">&quot;asc&quot;</span> ? <span class="string">&quot;createdAt&quot;</span>:<span class="string">&quot;-createdAt&quot;</span></span><br><span class="line">  <span class="keyword">const</span> q = req.query.q !== <span class="literal">undefined</span> ? &#123;<span class="string">&quot;content&quot;</span>: <span class="keyword">new</span> <span class="built_in">RegExp</span>(req.query.q)&#125; : &#123;&#125;;</span><br><span class="line">  <span class="keyword">const</span> post = <span class="keyword">await</span> Post.find(q).populate(&#123;</span><br><span class="line">    path: <span class="string">&#x27;user&#x27;</span>,</span><br><span class="line">    select: <span class="string">&#x27;name photo&#x27;</span></span><br><span class="line">  &#125;).sort(timeSort);</span><br><span class="line">  res.status(<span class="number">200</span>).json(&#123;</span><br><span class="line">    status: <span class="string">&#x27;success&#x27;</span>,</span><br><span class="line">    results: post.length,</span><br><span class="line">    data: &#123;</span><br><span class="line">      post</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h3 id="參考資源"><a href="#參考資源" class="headerlink" title="參考資源"></a>參考資源</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Error">Error - JavaScript | MDN</a></p>
+<p><a target="_blank" rel="noopener" href="https://expressjs.com/zh-tw/guide/error-handling.html">Express 錯誤處理</a></p>
+<h3 id="題目（將答案寫在-GitHub-並提交至回報區）"><a href="#題目（將答案寫在-GitHub-並提交至回報區）" class="headerlink" title="題目（將答案寫在 GitHub 並提交至回報區）"></a>題目（將答案寫在 GitHub 並提交至回報區）</h3><p>將以下 POST 路由中的註解下方的程式碼改為使用 <code>appError()</code> 自訂錯誤資訊，並測試可正確回傳錯誤訊息<br>routes/posts.js 的 POST 範例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">router.post(<span class="string">&#x27;/&#x27;</span>, <span class="keyword">async</span>(req, res, next) =&gt;  &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> data = req.body;</span><br><span class="line">    <span class="keyword">if</span> (!data.content) &#123;</span><br><span class="line">      <span class="comment">// 將以下改為 appError 自訂錯誤回饋</span></span><br><span class="line">      res.status(<span class="number">400</span>).json(&#123;</span><br><span class="line">        <span class="string">&quot;status&quot;</span>: <span class="string">&quot;false&quot;</span>,</span><br><span class="line">        <span class="string">&quot;message&quot;</span>: <span class="string">&quot;content 欄位為必填&quot;</span></span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> newPost = <span class="keyword">await</span> Post.create(</span><br><span class="line">      &#123;</span><br><span class="line">        user: data.user,</span><br><span class="line">        content: data.content,</span><br><span class="line">        tags: data.tags,</span><br><span class="line">        type:data.type</span><br><span class="line">      &#125;</span><br><span class="line">    );</span><br><span class="line">    res.status(<span class="number">200</span>).json(&#123;</span><br><span class="line">      status: <span class="string">&#x27;success&#x27;</span>,</span><br><span class="line">      data: newPost</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    next(error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>可將自己的專案加入 appError.js 自訂錯誤<br>若沒有也可使用此<a target="_blank" rel="noopener" href="https://github.com/dogwantfly/week5-middleware/tree/appError">專案</a></p>
+<h2 id="回報流程"><a href="#回報流程" class="headerlink" title="回報流程"></a>回報流程</h2><p>請同學依照下圖教學觀看解答、回報答案:</p>
+<p><img src="https://i.imgur.com/QtL8zEW.png"></p>
+<p>回報格式：請在「回報區」貼上 CodePen 或 HackMD 連結回報答案 (為了統計人數，請同學依序加上「報數」)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">router.post(<span class="string">&#x27;/&#x27;</span>, <span class="keyword">async</span>(req, res, next) =&gt;  &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> data = req.body;</span><br><span class="line">    <span class="keyword">if</span> (!data.content) &#123;</span><br><span class="line">      <span class="comment">// 錯誤訊息可自行調整</span></span><br><span class="line">      <span class="keyword">return</span> next(appError(<span class="number">400</span>, <span class="string">&quot;欄位未填寫正確：貼文內容為必填&quot;</span>, next));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> newPost = <span class="keyword">await</span> Post.create(</span><br><span class="line">      &#123;</span><br><span class="line">        user: data.user,</span><br><span class="line">        content: data.content,</span><br><span class="line">        tags: data.tags,</span><br><span class="line">        type: data.type</span><br><span class="line">      &#125;</span><br><span class="line">    );</span><br><span class="line">    res.status(<span class="number">200</span>).json(&#123;</span><br><span class="line">      status: <span class="string">&#x27;success&#x27;</span>,</span><br><span class="line">      data: newPost</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    next(error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Node-js-MongoDB/" rel="tag"># Node.js MongoDB</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/13/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day22/" rel="prev" title="Node.js 直播班每日任務🏅 Day 22(uncaughtException、unhandledRejection)">
+      <i class="fa fa-chevron-left"></i> Node.js 直播班每日任務🏅 Day 22(uncaughtException、unhandledRejection)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/05/13/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day24/" rel="next" title="Node.js 直播班每日任務🏅 Day 24(development 及 production 環境變數指令、客製錯誤訊息)">
+      Node.js 直播班每日任務🏅 Day 24(development 及 production 環境變數指令、客製錯誤訊息) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%8F%85-Day-23"><span class="nav-number">1.</span> <span class="nav-text">🏅 Day 23</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E8%A8%82%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF"><span class="nav-number">1.1.</span> <span class="nav-text">自訂錯誤訊息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%BA%90"><span class="nav-number">1.1.1.</span> <span class="nav-text">參考資源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE%EF%BC%88%E5%B0%87%E7%AD%94%E6%A1%88%E5%AF%AB%E5%9C%A8-GitHub-%E4%B8%A6%E6%8F%90%E4%BA%A4%E8%87%B3%E5%9B%9E%E5%A0%B1%E5%8D%80%EF%BC%89"><span class="nav-number">1.1.2.</span> <span class="nav-text">題目（將答案寫在 GitHub 並提交至回報區）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E5%A0%B1%E6%B5%81%E7%A8%8B"><span class="nav-number">1.2.</span> <span class="nav-text">回報流程</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="CingLin"
+      src="https://i.imgur.com/sTHh4ii.jpg">
+  <p class="site-author-name" itemprop="name">CingLin</p>
+  <div class="site-description" itemprop="description">沒有痛苦，沒有收穫</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fas fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">若要轉載文章，麻煩請保留原作者名稱與原始連結。</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://CingLin.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://cinglin570.github.io.com/2022/05/13/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day23/";
+    this.page.identifier = "2022/05/13/node春季直播班每日任務Day23/";
+    this.page.title = "Node.js 直播班每日任務🏅 Day 23(自訂錯誤訊息)";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://CingLin.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>

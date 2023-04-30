@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"cinglin570.github.io.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="💪 每日任務題目列表🏅 Day 1在 JavaScript 中命名規範中，會建議使用駝峰式的命名，駝峰式的命名又分為大駝峰與小駝峰，可參考「Wiki 上的介紹」。大多數的情況來說，我們都會使用小駝峰來進行 JS 變數的命名。 如 我的名字可以使用 myName 的方式進行命名。另外，如果是函式時則會以動詞的方式作為開頭，如：繪製圖表使用 renderChart 的名稱。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每日JS題庫Day1~Day5">
+<meta property="og:url" content="http://cinglin570.github.io.com/2023/04/03/%E6%AF%8F%E6%97%A5JS%E9%A1%8C%E5%BA%ABDay1-Day5/index.html">
+<meta property="og:site_name" content="CingLin Blog">
+<meta property="og:description" content="💪 每日任務題目列表🏅 Day 1在 JavaScript 中命名規範中，會建議使用駝峰式的命名，駝峰式的命名又分為大駝峰與小駝峰，可參考「Wiki 上的介紹」。大多數的情況來說，我們都會使用小駝峰來進行 JS 變數的命名。 如 我的名字可以使用 myName 的方式進行命名。另外，如果是函式時則會以動詞的方式作為開頭，如：繪製圖表使用 renderChart 的名稱。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/oZ6AQJL.png">
+<meta property="og:image" content="https://i.imgur.com/GAVpyNW.png">
+<meta property="article:published_time" content="2023-04-03T13:01:00.000Z">
+<meta property="article:modified_time" content="2023-04-03T13:16:36.215Z">
+<meta property="article:author" content="CingLin">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/oZ6AQJL.png">
+
+<link rel="canonical" href="http://cinglin570.github.io.com/2023/04/03/%E6%AF%8F%E6%97%A5JS%E9%A1%8C%E5%BA%ABDay1-Day5/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>每日JS題庫Day1~Day5 | CingLin Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXX-1 //UAID追蹤碼"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-XXXXXX-1 //UAID追蹤碼');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="CingLin Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">CingLin Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fas fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://cinglin570.github.io.com/2023/04/03/%E6%AF%8F%E6%97%A5JS%E9%A1%8C%E5%BA%ABDay1-Day5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.imgur.com/sTHh4ii.jpg">
+      <meta itemprop="name" content="CingLin">
+      <meta itemprop="description" content="沒有痛苦，沒有收穫">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CingLin Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          每日JS題庫Day1~Day5
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-04-03 21:01:00 / 修改時間：21:16:36" itemprop="dateCreated datePublished" datetime="2023-04-03T21:01:00+08:00">2023-04-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/04/03/%E6%AF%8F%E6%97%A5JS%E9%A1%8C%E5%BA%ABDay1-Day5/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/04/03/每日JS題庫Day1-Day5/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="💪-每日任務題目列表"><a href="#💪-每日任務題目列表" class="headerlink" title="💪 每日任務題目列表"></a>💪 每日任務題目列表</h1><h2 id="🏅-Day-1"><a href="#🏅-Day-1" class="headerlink" title="🏅 Day 1"></a>🏅 Day 1</h2><p>在 JavaScript 中命名規範中，會建議使用駝峰式的命名，駝峰式的命名又分為大駝峰與小駝峰，可參考「<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%A7%9D%E5%B3%B0%E5%BC%8F%E5%A4%A7%E5%B0%8F%E5%AF%AB">Wiki 上的介紹</a>」。大多數的情況來說，我們都會使用小駝峰來進行 JS 變數的命名。</p>
+<p>如 <strong>我的名字</strong>可以使用 <code>myName</code> 的方式進行命名。另外，如果是函式時則會以動詞的方式作為開頭，如：<strong>繪製圖表</strong>使用 <code>renderChart</code> 的名稱。</p>
+<a id="more"></a>
+<p>以下請同學：</p>
+<ol>
+<li>宣告變數、函式，變數請給予值</li>
+<li>變數名稱請用小駝峰的方式定義，並以非動詞作為開頭</li>
+<li>函式請用動詞作為開頭</li>
+</ol>
+<h4 id="題目："><a href="#題目：" class="headerlink" title="題目："></a>題目：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">變數：</span><br><span class="line">1. 我的車子</span><br><span class="line">2. 註冊時間</span><br><span class="line">3. 清醒狀態</span><br><span class="line">4. 家裡的啤酒</span><br><span class="line">5. 啤酒品牌</span><br><span class="line"></span><br><span class="line">函式：</span><br><span class="line">1. 取得資料</span><br><span class="line">2. 上傳圖片</span><br><span class="line">3. 更新畫面</span><br><span class="line">4. 喝酒</span><br></pre></td></tr></table></figure>
+
+<p>繳交範例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myCar = <span class="string">&#x27;卡斯伯的車&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//變數：</span></span><br><span class="line"><span class="number">1</span>) <span class="keyword">var</span> myCar= <span class="string">&quot;Maserati&quot;</span>; <span class="comment">//我的車子</span></span><br><span class="line"><span class="number">2</span>) <span class="keyword">var</span> registrationTime = <span class="string">&quot;20200615&quot;</span>; <span class="comment">//註冊時間</span></span><br><span class="line"><span class="number">3</span>) <span class="keyword">var</span> soberStatus = <span class="literal">true</span>; <span class="comment">//清醒狀態</span></span><br><span class="line"><span class="number">4</span>) <span class="keyword">var</span> beerAtHome = <span class="number">20</span>; <span class="comment">//家裡的啤酒</span></span><br><span class="line"><span class="number">5</span>) <span class="keyword">var</span> beerBrand = <span class="string">&quot;Corona&quot;</span> <span class="comment">//啤酒品牌</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//函式：</span></span><br><span class="line"><span class="number">1</span>) <span class="function"><span class="keyword">function</span> <span class="title">getData</span>(<span class="params"></span>)</span>&#123;...&#125;; <span class="comment">//取得資料</span></span><br><span class="line"><span class="number">2</span>) <span class="function"><span class="keyword">function</span> <span class="title">uploadImg</span>(<span class="params"></span>)</span>&#123;...&#125;; <span class="comment">//上傳圖片</span></span><br><span class="line"><span class="number">3</span>) <span class="function"><span class="keyword">function</span> <span class="title">reloadScreen</span>(<span class="params"></span>)</span>&#123;...&#125;; <span class="comment">//更新畫面</span></span><br><span class="line"><span class="number">4</span>) <span class="function"><span class="keyword">function</span> <span class="title">drinkBeer</span>(<span class="params"></span>)</span>&#123;...&#125;; <span class="comment">//喝酒</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🏅-Day-2"><a href="#🏅-Day-2" class="headerlink" title="🏅 Day 2"></a>🏅 Day 2</h2><p>物件中分為屬性及值，屬性可作為物件中的欄位名稱，而值是該屬性所代表的實際數值。其中 “屬性名稱” 在運作上都是以字串的形式儲存，因此只要是純文字，不管有沒有特殊符號都是可以運作的。</p>
+<p>而物件中在取值時，最常使用的方式是點記號，不過點記號在存取時會有一些限制，當屬性名稱帶有特殊符號或數值時，就無法正確運作，所以除了點記號外還會利用變數、字串的方式取得值，概念如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; &#39;a&#39;;</span><br><span class="line">var obj &#x3D; &#123;</span><br><span class="line">  a: &#39;value A&#39;,</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 以下三種可取得相同值</span><br><span class="line">console.log(obj.a); &#x2F;&#x2F; 點記號</span><br><span class="line">console.log(obj[&#39;a&#39;]); &#x2F;&#x2F; 使用字串</span><br><span class="line">console.log(obj[a]); &#x2F;&#x2F; 使用變數</span><br></pre></td></tr></table></figure>
+
+<p>請依照作業需求，使用不同的方式取得特定的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var b &#x3D; &#39;這是中文字&#39;;</span><br><span class="line"></span><br><span class="line">var arr &#x3D; &#123;</span><br><span class="line">  a: &#39;a&#39;,</span><br><span class="line">  1: &#39;b&#39;,</span><br><span class="line">  &#39;這是中文字&#39;: &#39;c&#39;,</span><br><span class="line">  &#39;b&#39;: &#39;d&#39;,</span><br><span class="line">  &#39;--some data&#39;: &#39;e&#39;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(arr.a); &#x2F;&#x2F; &#39;a&#39;</span><br><span class="line">console.log();  &#x2F;&#x2F; 請取得結果為 b 的值</span><br><span class="line">console.log();  &#x2F;&#x2F; 請取得結果為 c 的值，必須使用變數</span><br><span class="line">console.log();  &#x2F;&#x2F; 請取得結果為 d 的值，必須使用點記號</span><br><span class="line">console.log();  &#x2F;&#x2F; 請取得結果為 e 的值</span><br></pre></td></tr></table></figure>
+
+<h4 id="解答：-1"><a href="#解答：-1" class="headerlink" title="解答："></a>解答：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>) <span class="built_in">console</span>.log(arr.a); <span class="comment">// &#x27;a&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span>) <span class="built_in">console</span>.log(arr[<span class="string">&#x27;1&#x27;</span>]); </span><br><span class="line">   <span class="built_in">console</span>.log(arr[<span class="number">1</span>]);  <span class="comment">// 請取得結果為 b 的值</span></span><br><span class="line"></span><br><span class="line"><span class="number">3</span>) <span class="built_in">console</span>.log(arr[b]);  <span class="comment">// 請取得結果為 c 的值，必須使用變數</span></span><br><span class="line"></span><br><span class="line"><span class="number">4</span>) <span class="built_in">console</span>.log(arr.b);  <span class="comment">// 請取得結果為 d 的值，必須使用點記號</span></span><br><span class="line"></span><br><span class="line"><span class="number">5</span>) <span class="built_in">console</span>.log(arr[<span class="string">&#x27;--some data&#x27;</span>]);  <span class="comment">// 請取得結果為 e 的值</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🏅-Day-3"><a href="#🏅-Day-3" class="headerlink" title="🏅 Day 3"></a>🏅 Day 3</h2><p>接續前一日的概念，請使用迴圈搭配陣列的方式，依序列出物件內所有的值。</p>
+<ol>
+<li>建立一個陣列，其中包含所有的屬性名稱</li>
+<li>使用 for 迴圈或 forEach 依序陳列出結果為 ‘a’ ~ ‘e’ 的值</li>
+</ol>
+<p>迴圈參考：<a target="_blank" rel="noopener" href="https://wcc723.github.io/javascript/2017/06/29/es6-native-array/">https://wcc723.github.io/javascript/2017/06/29/es6-native-array/</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a: <span class="string">&#x27;a&#x27;</span>,</span><br><span class="line">  <span class="number">1</span>: <span class="string">&#x27;b&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;這是中文字&#x27;</span>: <span class="string">&#x27;c&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;b&#x27;</span>: <span class="string">&#x27;d&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;--some data&#x27;</span>: <span class="string">&#x27;e&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;這是中文字&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;--some data&#x27;</span>]; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用迴圈方法</span></span><br><span class="line"><span class="built_in">console</span>.log(...); <span class="comment">// 請依序呈現出 “物件” 內的 a, b, c, d, e</span></span><br></pre></td></tr></table></figure>
+
+<p>提示：</p>
+<ol>
+<li>物件屬性都是字串</li>
+<li>使用 forEach 依序執行，並帶出物件內的值</li>
+</ol>
+<p>答題重點：必須帶出 <code>obj</code> 物件內的值<br><img src="https://i.imgur.com/oZ6AQJL.png"></p>
+<h4 id="解答：-2"><a href="#解答：-2" class="headerlink" title="解答："></a>解答：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法一：</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;這是中文字&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;--some data&#x27;</span>]; </span><br><span class="line"></span><br><span class="line">arr.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(obj[item]);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//方法二：</span></span><br><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line"></span><br><span class="line"><span class="comment">// Object.values 可以直接撈出所有屬性並使用 sort 排序</span></span><br><span class="line"><span class="built_in">Object</span>.values(obj).sort().forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">	arr.push(item);</span><br><span class="line">&#125;)</span><br><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="JS直播班作業Day3" src="https://codepen.io/pvzfeusk/embed/MWKKNXb?default-tab=html" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/pvzfeusk/pen/MWKKNXb">
+  JS直播班作業Day3</a> by 胡謦麟 (<a target="_blank" rel="noopener" href="https://codepen.io/pvzfeusk">@pvzfeusk</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+
+<h2 id="🏅-Day-4"><a href="#🏅-Day-4" class="headerlink" title="🏅 Day 4"></a>🏅 Day 4</h2><p>真心鎮有一位 “小明”，是本系列故事的主角，生性害羞的他暗戀著大他五歲的 “漂亮阿姨”，在這個系列故事中就來看看 “小明” 能不能順利與 “漂亮阿姨” 表達愛慕之意，並且獲得正面的回覆喔 :D</p>
+<p>任務：</p>
+<ul>
+<li>認識居民</li>
+<li>在新建居民的函式內調整程式碼，使其回傳一個完整的物件資料</li>
+<li>條件：<ul>
+<li>不可操作全域的 town 變數</li>
+<li>必須回傳一個結果</li>
+<li>結果的 townData 必須與 town 相同（最後的相等）</li>
+</ul>
+</li>
+<li>使用 Codepen、JSBin 等服務繳交任務<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var town &#x3D; &#123;</span><br><span class="line">  name: &#39;真心鎮&#39;,</span><br><span class="line">  resident: []</span><br><span class="line">&#125;</span><br><span class="line">var townData &#x3D; &#123;&#125;;</span><br><span class="line">var Ming &#x3D; &#123; name: &#39;小明&#39;, age: 16 &#125;;</span><br><span class="line">var Auntie &#x3D; &#123; name: &#39;漂亮阿姨&#39;, age: 21 &#125;;</span><br><span class="line"></span><br><span class="line">function addResident(t, res1, res2) &#123;</span><br><span class="line">  &#x2F;&#x2F; 可以修改的片段</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">townData &#x3D; addResident(town, Ming, Auntie);</span><br><span class="line">console.log(townData &#x3D;&#x3D;&#x3D; town);</span><br><span class="line">console.log(townData.resident); &#x2F;&#x2F; 包含真心鎮的居民陣列資料</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>測驗目標：</p>
+<ul>
+<li>瞭解參數、回傳等技巧</li>
+<li>熟悉物件參考的特性</li>
+<li>觀念在影音課程中的物件、函式章節內</li>
+<li>如果遇到任何問題，試著透過團隊的形式討論</li>
+</ul>
+<p>結果範例：<br><img src="https://i.imgur.com/GAVpyNW.png"></p>
+<h4 id="解答：-3"><a href="#解答：-3" class="headerlink" title="解答："></a>解答：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addResident</span>(<span class="params">t, res1, res2</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//方法一：</span></span><br><span class="line">    t.resident.push(res1)</span><br><span class="line">    t.resident.push(res2)</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//方法二：</span></span><br><span class="line">    t.resident.push(res1, res2) <span class="comment">// push 可推入多個值</span></span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="JS直播班作業Day4" src="https://codepen.io/pvzfeusk/embed/Vweawgz?default-tab=html" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/pvzfeusk/pen/Vweawgz">
+  JS直播班作業Day4</a> by 胡謦麟 (<a target="_blank" rel="noopener" href="https://codepen.io/pvzfeusk">@pvzfeusk</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+
+<hr>
+<h2 id="🏅-Day-5"><a href="#🏅-Day-5" class="headerlink" title="🏅 Day 5"></a>🏅 Day 5</h2><p>情境：小明默默的喜歡大他五歲的漂亮阿姨，但小明膽子很小不敢直接說，因此想要透過暗號的方式傳遞訊息給漂亮阿姨。</p>
+<ul>
+<li>小明建立了一個暗號函式，傳入了一堆多餘的陣列，在解析後可以得到 ‘520’ 的結果。</li>
+</ul>
+<h4 id="初心者任務（完成此階段即算過關）："><a href="#初心者任務（完成此階段即算過關）：" class="headerlink" title="初心者任務（完成此階段即算過關）："></a>初心者任務（完成此階段即算過關）：</h4><ul>
+<li>僅能修改以下 <code>/* */</code> 片段，並使回傳的值為 “520”（不需理會陣列內的值）</li>
+</ul>
+<h4 id="英雄任務："><a href="#英雄任務：" class="headerlink" title="英雄任務："></a>英雄任務：</h4><ul>
+<li>僅能修改以下 <code>/* */</code> 片段</li>
+<li>使用迴圈手法取出陣列內的 5, 2, 0 三個數值</li>
+<li>使用陣列內的 5, 2, 0 組成一個新字串並回傳</li>
+</ul>
+<h4 id="團隊遊戲："><a href="#團隊遊戲：" class="headerlink" title="團隊遊戲："></a>團隊遊戲：</h4><p>已完成者，試著透過圖示說明這段函式及參數的<strong>傳遞流程</strong>，並分享給同組的成員。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [&#123;</span><br><span class="line">  using: <span class="literal">true</span>,</span><br><span class="line">  number: <span class="number">5</span>,</span><br><span class="line">&#125;,&#123;</span><br><span class="line">  using: <span class="literal">false</span>,</span><br><span class="line">  number: <span class="number">4</span>,</span><br><span class="line">&#125;,&#123;</span><br><span class="line">  using: <span class="literal">false</span>,</span><br><span class="line">  number: <span class="number">3</span>,</span><br><span class="line">&#125;,&#123;</span><br><span class="line">  using: <span class="literal">true</span>,</span><br><span class="line">  number: <span class="number">2</span>,</span><br><span class="line">&#125;,&#123;</span><br><span class="line">  using: <span class="literal">false</span>,</span><br><span class="line">  number: <span class="number">1</span>,</span><br><span class="line">&#125;,&#123;</span><br><span class="line">  using: <span class="literal">true</span>,</span><br><span class="line">  number: <span class="number">0</span>,</span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">saySomething</span>(<span class="params">cb, a</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> cb(a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = saySomething(<span class="comment">/* 只能在此插入程式碼 */</span>, arr);</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">// 結果必須為 520</span></span><br></pre></td></tr></table></figure>
+
+<p>這題因為比較難大家可以花些時間時間研究下 callback 的運作概念，如果不熟悉可不用急著今日回覆，試著閱讀以下文章並挑戰看看。</p>
+<p>學習重點：</p>
+<ul>
+<li>callback function：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Glossary/Callback_function">https://developer.mozilla.org/zh-TW/docs/Glossary/Callback_function</a></li>
+<li>迴圈取值：<a target="_blank" rel="noopener" href="https://wcc723.github.io/javascript/2017/06/29/es6-native-array/">https://wcc723.github.io/javascript/2017/06/29/es6-native-array/</a></li>
+</ul>
+<p>下期預告：漂亮阿姨接收到訊息後有什麼回覆呢！？</p>
+<p>解答（請盡可能不要看解答回覆）：<a target="_blank" rel="noopener" href="https://firebasestorage.googleapis.com/v0/b/casper-de5d5.appspot.com/o/images%2Fblog%2F202006%2F%E8%B2%BC%E4%B8%8A%E7%9A%84%E5%BD%B1%E5%83%8F_2020_6_12_%E4%B8%8A%E5%8D%8810_30.png?alt=media&token=a4e0b030-9fab-4e2b-993b-5c73f43b4cf6">參數及函式的運作圖</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = saySomething(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> str = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  arr.forEach(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="function"><span class="title">if</span>(<span class="params">item.using</span>)</span> &#123;</span><br><span class="line">      str += item.number;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> str;</span><br><span class="line">&#125;, arr); </span><br></pre></td></tr></table></figure>
+
+<h4 id="解答"><a href="#解答" class="headerlink" title="解答:"></a>解答:</h4><iframe height="300" style="width: 100%;" scrolling="no" title="JS直播班Day5" src="https://codepen.io/pvzfeusk/embed/KKVMZNY?default-tab=html" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/pvzfeusk/pen/KKVMZNY">
+  JS直播班Day5</a> by 胡謦麟 (<a target="_blank" rel="noopener" href="https://codepen.io/pvzfeusk">@pvzfeusk</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+
+<p>參考: <a target="_blank" rel="noopener" href="https://hackmd.io/@hexschool/HJDbvkFqU/%2FvmC0H8IbSWqm6oko9wyiHg">課程連結</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/04/03/JS%E6%96%B0%E6%89%8B%E4%BB%BB%E5%8B%99%E6%9D%91/" rel="prev" title="JS新手任務村">
+      <i class="fa fa-chevron-left"></i> JS新手任務村
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/04/04/%E6%AF%8F%E6%97%A5JS%E9%A1%8C%E5%BA%ABDay6/" rel="next" title="每日JS題庫Day6">
+      每日JS題庫Day6 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%92%AA-%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99%E9%A1%8C%E7%9B%AE%E5%88%97%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">💪 每日任務題目列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8F%85-Day-1"><span class="nav-number">1.1.</span> <span class="nav-text">🏅 Day 1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE%EF%BC%9A"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">題目：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94%EF%BC%9A"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">解答：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8F%85-Day-2"><span class="nav-number">1.2.</span> <span class="nav-text">🏅 Day 2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94%EF%BC%9A-1"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">解答：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8F%85-Day-3"><span class="nav-number">1.3.</span> <span class="nav-text">🏅 Day 3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94%EF%BC%9A-2"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">解答：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8F%85-Day-4"><span class="nav-number">1.4.</span> <span class="nav-text">🏅 Day 4</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94%EF%BC%9A-3"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">解答：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8F%85-Day-5"><span class="nav-number">1.5.</span> <span class="nav-text">🏅 Day 5</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9D%E5%BF%83%E8%80%85%E4%BB%BB%E5%8B%99%EF%BC%88%E5%AE%8C%E6%88%90%E6%AD%A4%E9%9A%8E%E6%AE%B5%E5%8D%B3%E7%AE%97%E9%81%8E%E9%97%9C%EF%BC%89%EF%BC%9A"><span class="nav-number">1.5.0.1.</span> <span class="nav-text">初心者任務（完成此階段即算過關）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8B%B1%E9%9B%84%E4%BB%BB%E5%8B%99%EF%BC%9A"><span class="nav-number">1.5.0.2.</span> <span class="nav-text">英雄任務：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%98%E9%9A%8A%E9%81%8A%E6%88%B2%EF%BC%9A"><span class="nav-number">1.5.0.3.</span> <span class="nav-text">團隊遊戲：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94"><span class="nav-number">1.5.0.4.</span> <span class="nav-text">解答:</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="CingLin"
+      src="https://i.imgur.com/sTHh4ii.jpg">
+  <p class="site-author-name" itemprop="name">CingLin</p>
+  <div class="site-description" itemprop="description">沒有痛苦，沒有收穫</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fas fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">若要轉載文章，麻煩請保留原作者名稱與原始連結。</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://CingLin.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://cinglin570.github.io.com/2023/04/03/%E6%AF%8F%E6%97%A5JS%E9%A1%8C%E5%BA%ABDay1-Day5/";
+    this.page.identifier = "2023/04/03/每日JS題庫Day1-Day5/";
+    this.page.title = "每日JS題庫Day1~Day5";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://CingLin.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>

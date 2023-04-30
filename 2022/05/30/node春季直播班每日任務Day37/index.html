@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"cinglin570.github.io.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="🏅 Day 37MongoDB 資料設計 embedded &#x2F; references常見的資料庫設計有：embedded 及 references像是第四週有練習的 Mongoose populate 語法，因貼文資料會加入 user 欄位把使用者資料加入，不過因使用者的資料在眾多貼文中可能會重複，並且是可能會被修改的，若將資料寫死在貼文資料中，修改上會很麻煩，因此可以將使用者資料另外放一個 M">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js 直播班每日任務🏅 Day 37(資料庫設計 embedded &#x2F; references)">
+<meta property="og:url" content="http://cinglin570.github.io.com/2022/05/30/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day37/index.html">
+<meta property="og:site_name" content="CingLin Blog">
+<meta property="og:description" content="🏅 Day 37MongoDB 資料設計 embedded &#x2F; references常見的資料庫設計有：embedded 及 references像是第四週有練習的 Mongoose populate 語法，因貼文資料會加入 user 欄位把使用者資料加入，不過因使用者的資料在眾多貼文中可能會重複，並且是可能會被修改的，若將資料寫死在貼文資料中，修改上會很麻煩，因此可以將使用者資料另外放一個 M">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/TkJ5tXJ.png">
+<meta property="og:image" content="https://i.imgur.com/EpvwLTV.png">
+<meta property="og:image" content="https://i.imgur.com/nJHXQ2o.png">
+<meta property="og:image" content="https://i.imgur.com/0IgKTdF.png">
+<meta property="og:image" content="https://i.imgur.com/F6VFGcX.png">
+<meta property="og:image" content="https://i.imgur.com/QtL8zEW.png">
+<meta property="article:published_time" content="2022-05-30T12:59:33.000Z">
+<meta property="article:modified_time" content="2022-05-30T13:01:01.028Z">
+<meta property="article:author" content="CingLin">
+<meta property="article:tag" content="Node.js MongoDB">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/TkJ5tXJ.png">
+
+<link rel="canonical" href="http://cinglin570.github.io.com/2022/05/30/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day37/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>Node.js 直播班每日任務🏅 Day 37(資料庫設計 embedded / references) | CingLin Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXX-1 //UAID追蹤碼"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-XXXXXX-1 //UAID追蹤碼');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="CingLin Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">CingLin Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fas fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://cinglin570.github.io.com/2022/05/30/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day37/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.imgur.com/sTHh4ii.jpg">
+      <meta itemprop="name" content="CingLin">
+      <meta itemprop="description" content="沒有痛苦，沒有收穫">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CingLin Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Node.js 直播班每日任務🏅 Day 37(資料庫設計 embedded / references)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2022-05-30 20:59:33 / 修改時間：21:01:01" itemprop="dateCreated datePublished" datetime="2022-05-30T20:59:33+08:00">2022-05-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node-js-%E7%9B%B4%E6%92%AD%E7%8F%AD-2022-%E6%98%A5%E5%AD%A3%E7%8F%AD/" itemprop="url" rel="index"><span itemprop="name">Node.js 直播班 - 2022 春季班</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/05/30/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day37/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/30/node春季直播班每日任務Day37/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="🏅-Day-37"><a href="#🏅-Day-37" class="headerlink" title="🏅 Day 37"></a>🏅 Day 37</h1><h2 id="MongoDB-資料設計-embedded-references"><a href="#MongoDB-資料設計-embedded-references" class="headerlink" title="MongoDB 資料設計 embedded / references"></a>MongoDB 資料設計 embedded / references</h2><p>常見的資料庫設計有：<strong>embedded</strong> 及 <strong>references</strong><br><img src="https://i.imgur.com/TkJ5tXJ.png"><br>像是第四週有練習的 Mongoose populate 語法，因貼文資料會加入 user 欄位把使用者資料加入，不過因使用者的資料在眾多貼文中可能會重複，並且是可能會被修改的，若將資料寫死在貼文資料中，修改上會很麻煩，因此可以將使用者資料另外放一個 Model，取得貼文時再使用 populate 關聯使用者資料，確保取得貼文時帶入的是最新的使用者資料</p>
+<a id="more"></a>
+
+<p>實作上也會依不同需求情境來選擇要使用哪種資料庫設計</p>
+<h3 id="題目（將答案寫在-HackMD-並提交至回報區）"><a href="#題目（將答案寫在-HackMD-並提交至回報區）" class="headerlink" title="題目（將答案寫在 HackMD 並提交至回報區）"></a>題目（將答案寫在 HackMD 並提交至回報區）</h3><p>請依據以下描述的情境選擇要使用 ==<strong>方案 A embedded</strong>== 或 ==<strong>方案 B references</strong>== 的做法</p>
+<p>回覆範例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">題目一</span><br><span class="line">1.A</span><br><span class="line">2.B</span><br><span class="line">3.A</span><br><span class="line"></span><br><span class="line">題目二</span><br><span class="line">A</span><br><span class="line"></span><br><span class="line">題目三</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://whimsical.com/3CkqgyD3n3GvsCrdkywruw">題目來源</a></p>
+<h4 id="題目一"><a href="#題目一" class="headerlink" title="題目一"></a>題目一</h4><p><img src="https://i.imgur.com/EpvwLTV.png"></p>
+<ol>
+<li>製作訂房系統，但希望可以做註冊登入功能，另外儲存使用者資料，訂單資料同時也會需要紀錄使用者的資料</li>
+<li>以留言板的模式製作一個較陽春的訂房系統，預約一個房型就如同新增一個留言，為了節省開發成本，不會新增其他資料，也不需註冊會員</li>
+</ol>
+<h4 id="題目二"><a href="#題目二" class="headerlink" title="題目二"></a>題目二</h4><p><img src="https://i.imgur.com/nJHXQ2o.png"><br>該火車時刻表每天會被查詢近千萬次，班次資料幾乎都是固定的，變更頻率低（很常被讀取，較少被寫入）</p>
+<h4 id="題目三"><a href="#題目三" class="headerlink" title="題目三"></a>題目三</h4><p><img src="https://i.imgur.com/0IgKTdF.png"><br>使用者可以時常新增貼文（無法預測貼文數量），系統也允許修改個人資料<br>例如：修改個人大頭貼後，所有該使用者發布的貼文的個人大頭貼都會同步更換<br>使用者也很常觀看其他人的貼文，貼文中也會顯示個人資訊</p>
+<h4 id="題目四"><a href="#題目四" class="headerlink" title="題目四"></a>題目四</h4><p><img src="https://i.imgur.com/F6VFGcX.png"><br>依<a target="_blank" rel="noopener" href="https://xd.adobe.com/view/c0763dbe-fc15-42e8-be0b-8956ed03e675-9525/screen/ace2ccc4-7e50-401b-998a-a14f49e87918/specs/">設計稿此頁</a>設計<br>貼文的數量不可預測，按讚資訊不會顯示出按讚者的資訊，同時使用者資料可能隨時變更</p>
+<h2 id="回報流程"><a href="#回報流程" class="headerlink" title="回報流程"></a>回報流程</h2><p>請同學依照下圖教學觀看解答、回報答案:</p>
+<p><img src="https://i.imgur.com/QtL8zEW.png"></p>
+<p>回報格式：請在「回報區」貼上 CodePen 或 HackMD 連結回報答案 (為了統計人數，請同學依序加上「報數」)</p>
+<p>解答<br>題目一<br>1.B<br>2.A</p>
+<p>題目二<br>A</p>
+<p>題目三<br>B</p>
+<p>題目四<br>B</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Node-js-MongoDB/" rel="tag"># Node.js MongoDB</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/30/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day36/" rel="prev" title="Node.js 直播班每日任務🏅 Day 36(新增、取消特定貼文讚)">
+      <i class="fa fa-chevron-left"></i> Node.js 直播班每日任務🏅 Day 36(新增、取消特定貼文讚)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/06/12/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day38/" rel="next" title="Node.js 直播班每日任務🏅 Day 38(常見資料庫設計)">
+      Node.js 直播班每日任務🏅 Day 38(常見資料庫設計) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%8F%85-Day-37"><span class="nav-number">1.</span> <span class="nav-text">🏅 Day 37</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB-%E8%B3%87%E6%96%99%E8%A8%AD%E8%A8%88-embedded-references"><span class="nav-number">1.1.</span> <span class="nav-text">MongoDB 資料設計 embedded &#x2F; references</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE%EF%BC%88%E5%B0%87%E7%AD%94%E6%A1%88%E5%AF%AB%E5%9C%A8-HackMD-%E4%B8%A6%E6%8F%90%E4%BA%A4%E8%87%B3%E5%9B%9E%E5%A0%B1%E5%8D%80%EF%BC%89"><span class="nav-number">1.1.1.</span> <span class="nav-text">題目（將答案寫在 HackMD 並提交至回報區）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE%E4%B8%80"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">題目一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE%E4%BA%8C"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">題目二</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE%E4%B8%89"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">題目三</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE%E5%9B%9B"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">題目四</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E5%A0%B1%E6%B5%81%E7%A8%8B"><span class="nav-number">1.2.</span> <span class="nav-text">回報流程</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="CingLin"
+      src="https://i.imgur.com/sTHh4ii.jpg">
+  <p class="site-author-name" itemprop="name">CingLin</p>
+  <div class="site-description" itemprop="description">沒有痛苦，沒有收穫</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fas fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">若要轉載文章，麻煩請保留原作者名稱與原始連結。</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://CingLin.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://cinglin570.github.io.com/2022/05/30/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day37/";
+    this.page.identifier = "2022/05/30/node春季直播班每日任務Day37/";
+    this.page.title = "Node.js 直播班每日任務🏅 Day 37(資料庫設計 embedded / references)";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://CingLin.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"cinglin570.github.io.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="🏅 Day 5非同步概念、async awaitasync 及 await 是執行非同步函式的一種寫法，此寫法可以讓非同步函式在閱讀上更接近同步函式 在非同步函式前加上 async 關鍵字，執行此函式時回傳值就會被轉為一個 Promise在 async 非同步函式中，使用 await 接收回傳的結果，它會暫停此 async 函式的執行，並且等待 Promise 的解析，解析完之後會回傳解析值，並">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js 直播班每日任務🏅 Day 5(非同步概念、async await)">
+<meta property="og:url" content="http://cinglin570.github.io.com/2022/04/24/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%994-14/index.html">
+<meta property="og:site_name" content="CingLin Blog">
+<meta property="og:description" content="🏅 Day 5非同步概念、async awaitasync 及 await 是執行非同步函式的一種寫法，此寫法可以讓非同步函式在閱讀上更接近同步函式 在非同步函式前加上 async 關鍵字，執行此函式時回傳值就會被轉為一個 Promise在 async 非同步函式中，使用 await 接收回傳的結果，它會暫停此 async 函式的執行，並且等待 Promise 的解析，解析完之後會回傳解析值，並">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-04-24T05:46:45.000Z">
+<meta property="article:modified_time" content="2022-04-26T05:07:46.076Z">
+<meta property="article:author" content="CingLin">
+<meta property="article:tag" content="Node.js MongoDB">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://cinglin570.github.io.com/2022/04/24/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%994-14/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>Node.js 直播班每日任務🏅 Day 5(非同步概念、async await) | CingLin Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXX-1 //UAID追蹤碼"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-XXXXXX-1 //UAID追蹤碼');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="CingLin Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">CingLin Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fas fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://cinglin570.github.io.com/2022/04/24/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%994-14/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.imgur.com/sTHh4ii.jpg">
+      <meta itemprop="name" content="CingLin">
+      <meta itemprop="description" content="沒有痛苦，沒有收穫">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CingLin Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Node.js 直播班每日任務🏅 Day 5(非同步概念、async await)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2022-04-24 13:46:45" itemprop="dateCreated datePublished" datetime="2022-04-24T13:46:45+08:00">2022-04-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-26 13:07:46" itemprop="dateModified" datetime="2022-04-26T13:07:46+08:00">2022-04-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node-js-%E7%9B%B4%E6%92%AD%E7%8F%AD-2022-%E6%98%A5%E5%AD%A3%E7%8F%AD/" itemprop="url" rel="index"><span itemprop="name">Node.js 直播班 - 2022 春季班</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/04/24/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%994-14/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/24/node春季直播班每日任務4-14/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="🏅-Day-5"><a href="#🏅-Day-5" class="headerlink" title="🏅 Day 5"></a>🏅 Day 5</h1><h2 id="非同步概念、async-await"><a href="#非同步概念、async-await" class="headerlink" title="非同步概念、async await"></a>非同步概念、async await</h2><p>async 及 await 是執行非同步函式的一種寫法，此寫法可以讓非同步函式在閱讀上更接近同步函式</p>
+<p>在非同步函式前加上 <code>async</code> 關鍵字，執行此函式時回傳值就會被轉為一個 Promise<br>在 <code>async</code> 非同步函式中，使用 <code>await</code> 接收回傳的結果，它會暫停此 async 函式的執行，並且等待 Promise 的解析，解析完之後會回傳解析值，並繼續此 async 函式的執行<br>也就是說在未等待到結果回傳前，不會執行到 <code>await</code> 之後的程式</p>
+<a id="more"></a>
+<p>範例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resolveAfter2Seconds</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      resolve(x);</span><br><span class="line">    &#125;, <span class="number">2000</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">add1</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> a = <span class="keyword">await</span> resolveAfter2Seconds(<span class="number">20</span>);</span><br><span class="line">  <span class="keyword">const</span> b = <span class="keyword">await</span> resolveAfter2Seconds(<span class="number">30</span>);</span><br><span class="line">  <span class="keyword">return</span> x + a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="參考資源"><a href="#參考資源" class="headerlink" title="參考資源"></a>參考資源</h3><p><a target="_blank" rel="noopener" href="https://www.casper.tw/development/2020/10/16/async-await/">Async function / Await 深度介紹 | 卡斯伯 Blog - 前端，沒有極限</a><br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/conflicting/Learn/JavaScript/Asynchronous/Promises">利用 async 及 await 讓非同步程式設計變得更容易 | MDN</a><br><a target="_blank" rel="noopener" href="https://courses.hexschool.com/courses/1670869/lectures/38886995">async、await 再升級</a>（章節影片）</p>
+<h3 id="題目（將答案寫在-CodePen-並提交至回報區）"><a href="#題目（將答案寫在-CodePen-並提交至回報區）" class="headerlink" title="題目（將答案寫在 CodePen 並提交至回報區）"></a>題目（將答案寫在 CodePen 並提交至回報區）</h3><p>流程：<br>批改作業 → 檢查獎勵 → 給予獎勵 → 退學或懲罰</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 批改作業</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">correctTest</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> score = <span class="built_in">Math</span>.round(<span class="built_in">Math</span>.random()*<span class="number">100</span>);</span><br><span class="line">      <span class="function"><span class="title">if</span>(<span class="params">score &gt;= <span class="number">60</span></span>)</span> &#123;</span><br><span class="line">        resolve(&#123;</span><br><span class="line">          name,</span><br><span class="line">          score</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        reject(<span class="string">&quot;您已達退學門檻&quot;</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, <span class="number">2000</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 檢查獎勵</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkReward</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="function"><span class="title">if</span>(<span class="params">data.score &gt;= <span class="number">90</span></span>)</span> &#123;</span><br><span class="line">        resolve(<span class="string">`<span class="subst">$&#123;data.name&#125;</span> 獲得電影票`</span>);</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (data.score &gt;= <span class="number">60</span> &amp;&amp; data.score &lt; <span class="number">90</span>) &#123;</span><br><span class="line">        resolve(<span class="string">`<span class="subst">$&#123;data.name&#125;</span> 獲得嘉獎`</span>);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        reject(<span class="string">`您沒有獎品`</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, <span class="number">2000</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>將以下這段程式碼改寫為 async await 的寫法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">correctTest(<span class="string">&quot;小明&quot;</span>)</span><br><span class="line"> .then(<span class="function"><span class="params">data</span> =&gt;</span> checkReward(data))</span><br><span class="line"> .then(<span class="function"><span class="params">reward</span> =&gt;</span> <span class="built_in">console</span>.log(reward))</span><br><span class="line"> .catch(<span class="function"><span class="params">error</span> =&gt;</span> <span class="built_in">console</span>.log(error))</span><br></pre></td></tr></table></figure>
+<p>回覆範例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> init = <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="comment">/* 在此填寫答案 */</span></span><br><span class="line">&#125;</span><br><span class="line">init();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//解答</span></span><br><span class="line"><span class="keyword">const</span> init = <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)   </span>&#123;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">      <span class="keyword">const</span> studentData = <span class="keyword">await</span> correctTest(<span class="string">&quot;小明&quot;</span>);</span><br><span class="line">      <span class="keyword">const</span> reward = <span class="keyword">await</span> checkReward(studentData);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">init();</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="回報區"><a href="#回報區" class="headerlink" title="回報區"></a>回報區</h2><table>
+<thead>
+<tr>
+<th>報數</th>
+<th>組別 / 名字</th>
+<th>codepen / hackMD / 其他回饋</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>39</td>
+<td>第 6 組 / 謦麟</td>
+<td><a target="_blank" rel="noopener" href="https://codepen.io/pvzfeusk/pen/bGamQWX?editors=0012">hackMD</a></td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Node-js-MongoDB/" rel="tag"># Node.js MongoDB</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/24/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%994-13/" rel="prev" title="Node.js 直播班每日任務🏅 Day 4(MongoDB 基本操作： 修改、刪除)">
+      <i class="fa fa-chevron-left"></i> Node.js 直播班每日任務🏅 Day 4(MongoDB 基本操作： 修改、刪除)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/04/24/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%994-15/" rel="next" title="Node.js 直播班每日任務🏅 Day 6(Mongoose、schema)">
+      Node.js 直播班每日任務🏅 Day 6(Mongoose、schema) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%8F%85-Day-5"><span class="nav-number">1.</span> <span class="nav-text">🏅 Day 5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E5%90%8C%E6%AD%A5%E6%A6%82%E5%BF%B5%E3%80%81async-await"><span class="nav-number">1.1.</span> <span class="nav-text">非同步概念、async await</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%BA%90"><span class="nav-number">1.1.1.</span> <span class="nav-text">參考資源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE%EF%BC%88%E5%B0%87%E7%AD%94%E6%A1%88%E5%AF%AB%E5%9C%A8-CodePen-%E4%B8%A6%E6%8F%90%E4%BA%A4%E8%87%B3%E5%9B%9E%E5%A0%B1%E5%8D%80%EF%BC%89"><span class="nav-number">1.1.2.</span> <span class="nav-text">題目（將答案寫在 CodePen 並提交至回報區）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E5%A0%B1%E5%8D%80"><span class="nav-number">1.2.</span> <span class="nav-text">回報區</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="CingLin"
+      src="https://i.imgur.com/sTHh4ii.jpg">
+  <p class="site-author-name" itemprop="name">CingLin</p>
+  <div class="site-description" itemprop="description">沒有痛苦，沒有收穫</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fas fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">若要轉載文章，麻煩請保留原作者名稱與原始連結。</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://CingLin.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://cinglin570.github.io.com/2022/04/24/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%994-14/";
+    this.page.identifier = "2022/04/24/node春季直播班每日任務4-14/";
+    this.page.title = "Node.js 直播班每日任務🏅 Day 5(非同步概念、async await)";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://CingLin.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>

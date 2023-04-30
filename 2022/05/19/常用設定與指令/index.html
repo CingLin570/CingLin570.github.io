@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"cinglin570.github.io.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="VSCode 常用設定與指令設定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VSCode 常用設定與指令">
+<meta property="og:url" content="http://cinglin570.github.io.com/2022/05/19/%E5%B8%B8%E7%94%A8%E8%A8%AD%E5%AE%9A%E8%88%87%E6%8C%87%E4%BB%A4/index.html">
+<meta property="og:site_name" content="CingLin Blog">
+<meta property="og:description" content="VSCode 常用設定與指令設定">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-05-19T02:57:37.000Z">
+<meta property="article:modified_time" content="2022-05-25T15:30:49.374Z">
+<meta property="article:author" content="CingLin">
+<meta property="article:tag" content="VSCode">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://cinglin570.github.io.com/2022/05/19/%E5%B8%B8%E7%94%A8%E8%A8%AD%E5%AE%9A%E8%88%87%E6%8C%87%E4%BB%A4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>VSCode 常用設定與指令 | CingLin Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXX-1 //UAID追蹤碼"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-XXXXXX-1 //UAID追蹤碼');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="CingLin Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">CingLin Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fas fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://cinglin570.github.io.com/2022/05/19/%E5%B8%B8%E7%94%A8%E8%A8%AD%E5%AE%9A%E8%88%87%E6%8C%87%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.imgur.com/sTHh4ii.jpg">
+      <meta itemprop="name" content="CingLin">
+      <meta itemprop="description" content="沒有痛苦，沒有收穫">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CingLin Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          VSCode 常用設定與指令
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2022-05-19 10:57:37" itemprop="dateCreated datePublished" datetime="2022-05-19T10:57:37+08:00">2022-05-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-05-25 23:30:49" itemprop="dateModified" datetime="2022-05-25T23:30:49+08:00">2022-05-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/VSCode/" itemprop="url" rel="index"><span itemprop="name">VSCode</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/05/19/%E5%B8%B8%E7%94%A8%E8%A8%AD%E5%AE%9A%E8%88%87%E6%8C%87%E4%BB%A4/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/19/常用設定與指令/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="VSCode-常用設定與指令"><a href="#VSCode-常用設定與指令" class="headerlink" title="VSCode 常用設定與指令"></a>VSCode 常用設定與指令</h1><h2 id="設定"><a href="#設定" class="headerlink" title="設定"></a>設定</h2><a id="more"></a>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;window.zoomLevel&quot;</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="comment">// emmet tab 展開</span></span><br><span class="line">  <span class="attr">&quot;emmet.triggerExpansionOnTab&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 不支援的語言中啟用 Emmet</span></span><br><span class="line">  <span class="attr">&quot;emmet.includeLanguages&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;javascript&quot;</span>: <span class="string">&quot;javascriptreact&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;vue-html&quot;</span>: <span class="string">&quot;html&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;plaintext&quot;</span>: <span class="string">&quot;jade&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;ejs&quot;</span>: <span class="string">&quot;html&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;editor.rulers&quot;</span>: [<span class="number">80</span>, <span class="number">120</span>],</span><br><span class="line">  <span class="attr">&quot;editor.fontLigatures&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;editor.wordWrap&quot;</span>: <span class="string">&quot;on&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;workbench.iconTheme&quot;</span>: <span class="string">&quot;material-icon-theme&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;liveServer.settings.donotShowInfoMsg&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 不要產出 map 檔</span></span><br><span class="line">  <span class="attr">&quot;liveSassCompile.settings.generateMap&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">// 協助編譯兼容99%瀏覽器，且向下相容兩個版本</span></span><br><span class="line">  <span class="attr">&quot;liveSassCompile.settings.autoprefix&quot;</span>: [<span class="string">&quot;&gt; 1%&quot;</span>, <span class="string">&quot;last 2 versions&quot;</span>],</span><br><span class="line">  <span class="comment">// 自訂編譯後產出的css檔案放置路徑</span></span><br><span class="line">  <span class="attr">&quot;liveSassCompile.settings.formats&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;format&quot;</span>: <span class="string">&quot;expanded&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;extensionName&quot;</span>: <span class="string">&quot;.css&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;savePath&quot;</span>: <span class="string">&quot;/public/css/&quot;</span> <span class="comment">//此為輸出路徑，可自行更改</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;extensionName&quot;</span>: <span class="string">&quot;.min.css&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;format&quot;</span>: <span class="string">&quot;compressed&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;savePath&quot;</span>: <span class="string">&quot;/public/css&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">&quot;[html]&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;editor.defaultFormatter&quot;</span>: <span class="string">&quot;vscode.html-language-features&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;html.format.wrapAttributes&quot;</span>: <span class="string">&quot;force-expand-multiline&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;bracketPairColorizer.depreciation-notice&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">// 開啟顯示空白(格)符號</span></span><br><span class="line">  <span class="attr">&quot;editor.renderWhitespace&quot;</span>: <span class="string">&quot;all&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;editor.renderControlCharacters&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// 預設 HTML 樣板設置</span></span><br><span class="line">  <span class="attr">&quot;emmet.variables&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;lang&quot;</span>: <span class="string">&quot;zh-Hant-TW&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;charset&quot;</span>: <span class="string">&quot;UTF-8&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// tab 預設空格數量</span></span><br><span class="line">  <span class="attr">&quot;editor.tabSize&quot;</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="comment">// 預設行尾字元，使用 \n 表示 LF，\r\n 表示 CRLF。</span></span><br><span class="line">  <span class="attr">&quot;files.eol&quot;</span>: <span class="string">&quot;\n&quot;</span>,</span><br><span class="line">  <span class="comment">// 編輯器字型大小</span></span><br><span class="line">  <span class="attr">&quot;editor.fontSize&quot;</span>: <span class="number">14</span>,</span><br><span class="line">  <span class="comment">// 終端機字型大小</span></span><br><span class="line">  <span class="attr">&quot;terminal.integrated.fontSize&quot;</span>: <span class="number">14</span>,</span><br><span class="line">  <span class="comment">// 滑鼠放大視窗字型(按著 CRTL + 滾輪)</span></span><br><span class="line">  <span class="attr">&quot;editor.mouseWheelZoom&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">// 格式化單引號</span></span><br><span class="line">  <span class="attr">&quot;prettier.singleQuote&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">&quot;[jsonc]&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;editor.defaultFormatter&quot;</span>: <span class="string">&quot;esbenp.prettier-vscode&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="VSCode-推薦套件："><a href="#VSCode-推薦套件：" class="headerlink" title="VSCode 推薦套件："></a>VSCode 推薦套件：</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.atom-keybindings">Atom Keymap</a> （個人喜好 分頁切換</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a> （必裝</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow">indent-rainbow</a> （縮排檢視神器</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">Code Spell Checker</a> （錯字檢查神器</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">Prettier</a> （程式碼格式化</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=dkultasev.vs-code-snippet-generator">VS Code Snippet Generator</a>（堪用</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer">Bracket Pair Colorizer</a> ( 括號分色</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2">Bracket Pair Colorizer 2</a> ( 括號分色2</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree">Todo Tree</a> ( 高亮 TODO 等等註解方便</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode">Tabnine AI</a> ( 代碼建議、代碼預測、代碼提示</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme">Material Icon Theme</a> ( 將檔案 icon 更換 更容易識別</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks">Bookmarks</a> ( 設定標籤 快速定位到你紀錄的地方</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag">Auto Rename Tag</a> ( 用更快的方式修改 html tag</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag">Auto Close Tag</a> ( 自動完成 html tag<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2></li>
+</ul>
+<h3 id="開啟-關閉-檔案-amp-專案資料夾"><a href="#開啟-關閉-檔案-amp-專案資料夾" class="headerlink" title="開啟/關閉 檔案&amp;專案資料夾"></a>開啟/關閉 檔案&amp;專案資料夾</h3><table>
+<thead>
+<tr>
+<th>指令說明</th>
+<th>Windows 指令</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>開啟文件</td>
+<td><code>Ctrl</code> + <code>O</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>開啟資料夾</td>
+<td><code>Ctrl</code> + <code>K</code> + <code>L</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>儲存文件</td>
+<td><code>Ctrl</code> + <code>S</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>儲存所有文件</td>
+<td><code>Ctrl</code> + <code>k</code> <code>S</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>另存新檔</td>
+<td><code>Ctrl</code> + <code>Shift</code> + <code>S</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>開新檔案</td>
+<td><code>Ctrl</code> + <code>N</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>開新VSCode視窗</td>
+<td><code>Ctrl</code> + <code>Shift</code> + <code>N</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>關閉檔案/關閉窗格</td>
+<td><code>Ctrl</code> + <code>W</code> or <code>Ctrl</code> + <code>F4</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>關閉所有檔案</td>
+<td><code>Ctrl</code> + <code>k</code> or<code>Ctrl</code> + <code>W</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>關閉整個 VS Code</td>
+<td><code>Ctrl</code> + <code>Shift</code> + <code>W</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><font color="#f00">快速搜尋檔案並開啟</font></td>
+<td><code>Ctrl</code> + <code>P</code></td>
+<td>註1</td>
+</tr>
+<tr>
+<td><font color="#f00">命令列</font></td>
+<td><code>F1</code> or <code>Ctrl</code> + <code>Shift</code> + <code>P</code></td>
+<td>註1</td>
+</tr>
+<tr>
+<td><font color="#f00">設定格式化Prettier套件</font></td>
+<td>Ctrl + Shift + P &gt; 輸入format &gt; 設定預設Prettier格式化</td>
+<td>-</td>
+</tr>
+<tr>
+<td><font color="#f00">文件自動排版</font></td>
+<td><code>Alt</code> + <code>Shift</code> + <code>F</code></td>
+<td>註2</td>
+</tr>
+</tbody></table>
+<p><strong>備註</strong></p>
+<ol>
+<li>開頭輸入 &gt; 為指令模式；沒有 &gt; 開頭時為搜尋檔名快速開啟。</li>
+<li>可使用 Prettier 設定格式化排版，coding style 略有不同，使用自動排版務必謹慎。</li>
+</ol>
+<h3 id="面板開關-設定-編輯檢視設定"><a href="#面板開關-設定-編輯檢視設定" class="headerlink" title="面板開關/設定/編輯檢視設定"></a>面板開關/設定/編輯檢視設定</h3><table>
+<thead>
+<tr>
+<th>指令說明</th>
+<th>Windows 指令</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><font color="#f00">[VS Code] 放大</font></td>
+<td><code>Ctrl</code> + <code>+</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><font color="#f00">[VS Code] 縮小</font></td>
+<td><code>Ctrl</code> + <code>-</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>[Scroll Page ] 往上滾 / 往下滾</td>
+<td><code>Ctrl</code> + <code>↑</code> / <code>↓</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>[面板開/關] 側欄</td>
+<td><code>Ctrl</code> + <code>B</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>[面板開/關] 插件</td>
+<td><code>Ctrl</code> + <code>Shift</code> + <code>X</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>[面板開/關] 終端機</td>
+<td><code>Ctrl</code> + `</td>
+<td>-</td>
+</tr>
+<tr>
+<td>[面板控制] 新開終端機</td>
+<td><code>Ctrl</code> + <code>Shift</code> + `</td>
+<td>-</td>
+</tr>
+<tr>
+<td>[面板控制] 分割視窗方式新開終端機</td>
+<td><code>Ctrl</code> + <code>Shift</code> + <code>5</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>[面板開/關] 下方面版</td>
+<td><code>Ctrl</code> + <code>J</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><font color="#f00">[切換開啟中的檔案] 當前窗格的</font></td>
+<td><code>Alt</code> + <code>→</code> / <code>←</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>[切換開啟中的檔案] 列表往下選</td>
+<td><code>Ctrl</code> + <code>tab</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>[切換開啟中的檔案] 列表往上選</td>
+<td><code>Ctrl</code> + <code>Shift</code> + <code>tab</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>[切換檔案] 所在窗格的檔案</td>
+<td><code>Alt</code> + <code>1</code> / <code>2</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>[切換檔案] 切換/新增第Ｎ個窗格</td>
+<td><code>Ctrl</code> + <code>1</code> / <code>2</code></td>
+<td>註1</td>
+</tr>
+<tr>
+<td>[文檔檢視] 自動折行檢視</td>
+<td><code>Alt</code> + <code>Z</code></td>
+<td>註2</td>
+</tr>
+<tr>
+<td>用戶設置</td>
+<td><code>Ctrl</code> + <code>,</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>快速鍵設置</td>
+<td><code>Ctrl</code> + <code>K</code> or<code>Ctrl</code> + <code>S</code></td>
+<td>-</td>
+</tr>
+</tbody></table>
+<p><strong>備註</strong></p>
+<ol>
+<li>沒有第Ｎ個分割窗格時等同於新開分割窗格</li>
+<li>只是方便檢視,非編輯文檔本身</li>
+</ol>
+<h3 id="編輯-Code-快鍵-當前行-跳至行-…"><a href="#編輯-Code-快鍵-當前行-跳至行-…" class="headerlink" title="編輯 Code 快鍵 - 當前行/跳至行 …"></a>編輯 Code 快鍵 - 當前行/跳至行 …</h3><table>
+<thead>
+<tr>
+<th>指令說明</th>
+<th>Windows 指令</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>復原</td>
+<td><code>Ctrl</code> + <code>Z</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>重做</td>
+<td><code>Ctrl</code> + <code>Shift</code> + <code>Z</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>剪下</td>
+<td><code>Ctrl</code> + <code>X</code></td>
+<td>註1</td>
+</tr>
+<tr>
+<td>複製</td>
+<td><code>Ctrl</code> + <code>C</code></td>
+<td>註1</td>
+</tr>
+<tr>
+<td>貼上</td>
+<td><code>Ctrl</code> + <code>V</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>[刪除] 該行</td>
+<td><code>Ctrl</code> + <code>Shift</code> + <code>K</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><font color="#f00">[移動] 往上／下行移</font></td>
+<td><code>Alt</code> + <code>↑</code> / <code>↓</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>[複製] 往上／下複製</td>
+<td><code>Alt</code> + <code>Shift</code> + <code>↑</code> / <code>↓</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><font color="#f00">[縮排] 往後</font></td>
+<td><code>tab]</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><font color="#f00">[縮排] 往前</font></td>
+<td><code>Shift</code> + <code>tab]</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>註解</td>
+<td><code>Ctrl</code> + <code>/</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><font color="#f00">[選取] 向下選取相同字</font></td>
+<td><code>Ctrl</code> + <code>D</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><font color="#f00">重新命名符號</font></td>
+<td><code>F2</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><font color="#f00">快速選取整行</font></td>
+<td><code>Ctrl</code> + <code>L</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><font color="#f00">展開選取項目</font></td>
+<td><code>shift</code> + <code>alt</code> + <code>→</code></td>
+<td>-</td>
+</tr>
+</tbody></table>
+<p><strong>備註</strong></p>
+<ol>
+<li>沒有選取字時也有效作用於整行</li>
+</ol>
+<p>參考:<a target="_blank" rel="noopener" href="https://israynotarray.com/vscode/20210512/2779926364/">VSCode 的推薦實用設定</a>,<br><a target="_blank" rel="noopener" href="https://www.casper.tw/development/2020/12/13/vscode-extension/">12 個前端愛用的 VSCode 擴充套件</a>,<br><a target="_blank" rel="noopener" href="https://israynotarray.com/vscode/20191212/2147775133/">Visual Studio Code(VSCode) 開發者必備的實用套件</a>,<br><a target="_blank" rel="noopener" href="https://eudora.cc/posts/31485/">列表常用的 VSCode 快速鍵。</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/VSCode/" rel="tag"># VSCode</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/13/swagger%E7%AD%86%E8%A8%98/" rel="prev" title="swagger筆記">
+      <i class="fa fa-chevron-left"></i> swagger筆記
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/05/25/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day25/" rel="next" title="Node.js 直播班每日任務🏅 Day 25(非同步錯誤管理)">
+      Node.js 直播班每日任務🏅 Day 25(非同步錯誤管理) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VSCode-%E5%B8%B8%E7%94%A8%E8%A8%AD%E5%AE%9A%E8%88%87%E6%8C%87%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">VSCode 常用設定與指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A"><span class="nav-number">1.1.</span> <span class="nav-text">設定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VSCode-%E6%8E%A8%E8%96%A6%E5%A5%97%E4%BB%B6%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">VSCode 推薦套件：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4"><span class="nav-number">1.3.</span> <span class="nav-text">指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%96%8B%E5%95%9F-%E9%97%9C%E9%96%89-%E6%AA%94%E6%A1%88-amp-%E5%B0%88%E6%A1%88%E8%B3%87%E6%96%99%E5%A4%BE"><span class="nav-number">1.3.1.</span> <span class="nav-text">開啟&#x2F;關閉 檔案&amp;專案資料夾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E6%9D%BF%E9%96%8B%E9%97%9C-%E8%A8%AD%E5%AE%9A-%E7%B7%A8%E8%BC%AF%E6%AA%A2%E8%A6%96%E8%A8%AD%E5%AE%9A"><span class="nav-number">1.3.2.</span> <span class="nav-text">面板開關&#x2F;設定&#x2F;編輯檢視設定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B7%A8%E8%BC%AF-Code-%E5%BF%AB%E9%8D%B5-%E7%95%B6%E5%89%8D%E8%A1%8C-%E8%B7%B3%E8%87%B3%E8%A1%8C-%E2%80%A6"><span class="nav-number">1.3.3.</span> <span class="nav-text">編輯 Code 快鍵 - 當前行&#x2F;跳至行 …</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="CingLin"
+      src="https://i.imgur.com/sTHh4ii.jpg">
+  <p class="site-author-name" itemprop="name">CingLin</p>
+  <div class="site-description" itemprop="description">沒有痛苦，沒有收穫</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fas fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">若要轉載文章，麻煩請保留原作者名稱與原始連結。</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://CingLin.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://cinglin570.github.io.com/2022/05/19/%E5%B8%B8%E7%94%A8%E8%A8%AD%E5%AE%9A%E8%88%87%E6%8C%87%E4%BB%A4/";
+    this.page.identifier = "2022/05/19/常用設定與指令/";
+    this.page.title = "VSCode 常用設定與指令";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://CingLin.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>

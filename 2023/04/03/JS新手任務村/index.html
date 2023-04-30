@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"cinglin570.github.io.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="🏅 JS新手任務村🏅 Day 1真心鎮大冒險 番外篇： 因為追求漂亮阿姨的關係，小明最近手頭非常緊，於是他找到家境不錯的好友「杰倫」，想跟他討教賺大錢的方式。不過杰倫平時也不是很好聯絡，因此小明決定先開發一款用於通訊的小工具，便於與杰倫討論相關事宜。 任務： 在畫面上呈現小明、杰倫的區塊 區塊內分別有 input, button 以及呈現文字的地方 在小明的區塊內，可以將文字發送到杰倫的區塊內">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS新手任務村">
+<meta property="og:url" content="http://cinglin570.github.io.com/2023/04/03/JS%E6%96%B0%E6%89%8B%E4%BB%BB%E5%8B%99%E6%9D%91/index.html">
+<meta property="og:site_name" content="CingLin Blog">
+<meta property="og:description" content="🏅 JS新手任務村🏅 Day 1真心鎮大冒險 番外篇： 因為追求漂亮阿姨的關係，小明最近手頭非常緊，於是他找到家境不錯的好友「杰倫」，想跟他討教賺大錢的方式。不過杰倫平時也不是很好聯絡，因此小明決定先開發一款用於通訊的小工具，便於與杰倫討論相關事宜。 任務： 在畫面上呈現小明、杰倫的區塊 區塊內分別有 input, button 以及呈現文字的地方 在小明的區塊內，可以將文字發送到杰倫的區塊內">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/DSxO9UU.png">
+<meta property="og:image" content="https://i.imgur.com/57nfC6f.png">
+<meta property="og:image" content="https://i.imgur.com/exUTUHQ.png">
+<meta property="og:image" content="https://i.imgur.com/YN0cBss.png">
+<meta property="og:image" content="https://i.imgur.com/DrbhrWe.png">
+<meta property="og:image" content="https://i.imgur.com/sUIT6fq.png">
+<meta property="article:published_time" content="2023-04-03T11:30:18.000Z">
+<meta property="article:modified_time" content="2023-04-03T13:18:10.658Z">
+<meta property="article:author" content="CingLin">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/DSxO9UU.png">
+
+<link rel="canonical" href="http://cinglin570.github.io.com/2023/04/03/JS%E6%96%B0%E6%89%8B%E4%BB%BB%E5%8B%99%E6%9D%91/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>JS新手任務村 | CingLin Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXX-1 //UAID追蹤碼"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-XXXXXX-1 //UAID追蹤碼');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="CingLin Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">CingLin Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fas fa-user fa-fw"></i>關於</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://cinglin570.github.io.com/2023/04/03/JS%E6%96%B0%E6%89%8B%E4%BB%BB%E5%8B%99%E6%9D%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.imgur.com/sTHh4ii.jpg">
+      <meta itemprop="name" content="CingLin">
+      <meta itemprop="description" content="沒有痛苦，沒有收穫">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CingLin Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JS新手任務村
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-04-03 19:30:18 / 修改時間：21:18:10" itemprop="dateCreated datePublished" datetime="2023-04-03T19:30:18+08:00">2023-04-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/04/03/JS%E6%96%B0%E6%89%8B%E4%BB%BB%E5%8B%99%E6%9D%91/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/04/03/JS新手任務村/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="🏅-JS新手任務村"><a href="#🏅-JS新手任務村" class="headerlink" title="🏅 JS新手任務村"></a>🏅 JS新手任務村</h1><h2 id="🏅-Day-1"><a href="#🏅-Day-1" class="headerlink" title="🏅 Day 1"></a>🏅 Day 1</h2><p>真心鎮大冒險 番外篇：</p>
+<p>因為追求漂亮阿姨的關係，小明最近手頭非常緊，於是他找到家境不錯的好友「杰倫」，想跟他討教賺大錢的方式。不過杰倫平時也不是很好聯絡，因此小明決定先開發一款用於通訊的小工具，便於與杰倫討論相關事宜。</p>
+<h4 id="任務："><a href="#任務：" class="headerlink" title="任務："></a>任務：</h4><ol>
+<li>在畫面上呈現小明、杰倫的區塊</li>
+<li>區塊內分別有 input, button 以及呈現文字的地方</li>
+<li>在小明的區塊內，可以將文字發送到杰倫的區塊內，反之亦可</li>
+<li>發出訊息後，須清空 input 欄位<a id="more"></a>
+示意圖片：</li>
+</ol>
+<p><img src="https://i.imgur.com/DSxO9UU.png"></p>
+<p>參考 HTML 結構：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;mingInput&quot;&gt;</span><br><span class="line">&lt;button id&#x3D;&quot;mingBtn&quot;&gt;小明發出訊息&lt;&#x2F;button&gt;</span><br><span class="line">&lt;div&gt;小明收到的訊息：&lt;span id&#x3D;&quot;mingMsg&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;hr&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;jayInput&quot;&gt;</span><br><span class="line">&lt;button id&#x3D;&quot;jayBtn&quot;&gt;杰倫發出訊息&lt;&#x2F;button&gt;</span><br><span class="line">&lt;div&gt;杰倫收到的訊息：&lt;span id&#x3D;&quot;jayMsg&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="學習重點："><a href="#學習重點：" class="headerlink" title="學習重點："></a>學習重點：</h4><ul>
+<li>了解如何取得畫面元素 <code>document.querySelector</code></li>
+<li>了解如何製作事件監聽及觸發事件 <code>addEventListener</code>、<code>function</code></li>
+<li>了解如何將資料寫在畫面上：<a target="_blank" rel="noopener" href="https://www.fooish.com/javascript/dom/">https://www.fooish.com/javascript/dom/</a><ul>
+<li>主要了解 textContent、value、innerHTML</li>
+</ul>
+</li>
+</ul>
+<h4 id="普通挑戰："><a href="#普通挑戰：" class="headerlink" title="普通挑戰："></a>普通挑戰：</h4><ul>
+<li>完成雙邊溝通的功能</li>
+</ul>
+<h4 id="英雄挑戰："><a href="#英雄挑戰：" class="headerlink" title="英雄挑戰："></a>英雄挑戰：</h4><ul>
+<li>雙邊溝通只能使用一個函式（參數）</li>
+</ul>
+<h4 id="批改重點："><a href="#批改重點：" class="headerlink" title="批改重點："></a>批改重點：</h4><ul>
+<li>程式執行功能是否正確</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mingMoney = <span class="number">1000</span>;</span><br><span class="line"><span class="keyword">var</span> mingTotal = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;#mingTotal&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> input = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;#input&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> addMoneyBtn = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;#addMoney&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> reduceMoneyBtn = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;#reduceMoney&#x27;</span>);</span><br><span class="line"></span><br><span class="line">mingTotal.textContent = mingMoney;</span><br><span class="line">addMoneyBtn.addEventListener(<span class="string">&#x27;click&#x27;</span>,addMoney);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addMoney</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  mingTotal.textContent = mingMoney += <span class="built_in">Number</span>(input.value);</span><br><span class="line">  input.value = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="keyword">return</span> input;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">reduceMoneyBtn.addEventListener(<span class="string">&#x27;click&#x27;</span>,reduceMoney);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reduceMoney</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  mingTotal.textContent = mingTotal.innerText -= input.value;</span><br><span class="line">  input.value = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="keyword">return</span> input;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="解答"><a href="#解答" class="headerlink" title="解答:"></a>解答:</h4><ul>
+<li>普通挑戰:</li>
+</ul>
+<iframe height="300" style="width: 100%;" scrolling="no" title="JS新手任務普通挑戰6/15" src="https://codepen.io/pvzfeusk/embed/JjGEZzy?default-tab=html" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/pvzfeusk/pen/JjGEZzy">
+  JS新手任務普通挑戰6/15</a> by 胡謦麟 (<a target="_blank" rel="noopener" href="https://codepen.io/pvzfeusk">@pvzfeusk</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+
+<ul>
+<li>英雄挑戰:</li>
+</ul>
+<iframe height="300" style="width: 100%;" scrolling="no" title="JS新手任務Day 1 (6/15)英雄挑戰" src="https://codepen.io/pvzfeusk/embed/ExeqwgX?default-tab=html" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/pvzfeusk/pen/ExeqwgX">
+  JS新手任務Day 1 (6/15)英雄挑戰</a> by 胡謦麟 (<a target="_blank" rel="noopener" href="https://codepen.io/pvzfeusk">@pvzfeusk</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+---
+
+<h2 id="🏅-Day-2"><a href="#🏅-Day-2" class="headerlink" title="🏅 Day 2"></a>🏅 Day 2</h2><p>小明在討教前也準備了自己的構想，白手起家就要做無本生意，小明與杰倫說到：「想在這小鎮上進行乞討，不需要資金也可以開始動手」</p>
+<p>開始動手乞討前，小明還準備了一個小工具，每當收到乞討費用或支出都可以記錄！</p>
+<h4 id="任務：-1"><a href="#任務：-1" class="headerlink" title="任務："></a>任務：</h4><ul>
+<li>在畫面上新增一個 input、兩個按鈕以及呈現文字的區塊</li>
+<li>按鈕可以觸發新增、減少錢的事件，用來讀取 input 的欄位做計算</li>
+<li>小明預設有 1000 元，每次新增、減少都會呈現最終費用於畫面上</li>
+</ul>
+<p><img src="https://i.imgur.com/57nfC6f.png"></p>
+<p>參考 HTML 結構：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">id</span>=<span class="string">&quot;input&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;addMoney&quot;</span>&gt;</span>小明增加錢<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;reduceMoney&quot;</span>&gt;</span>小明扣錢<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>小明現在有的錢：<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;mingMoney&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="學習重點：-1"><a href="#學習重點：-1" class="headerlink" title="學習重點："></a>學習重點：</h4><ul>
+<li>input 取得的都是字串，計算前需要先做到<strong>型別轉換</strong></li>
+<li>計算運算子的計算方式</li>
+</ul>
+<h4 id="普通挑戰：-1"><a href="#普通挑戰：-1" class="headerlink" title="普通挑戰："></a>普通挑戰：</h4><ul>
+<li>完成基本計算功能</li>
+</ul>
+<h4 id="英雄挑戰：-1"><a href="#英雄挑戰：-1" class="headerlink" title="英雄挑戰："></a>英雄挑戰：</h4><ul>
+<li>加 / 減 只能使用一個函式</li>
+<li>避免出現 NaN 的判斷邏輯</li>
+</ul>
+<h4 id="批改重點：-1"><a href="#批改重點：-1" class="headerlink" title="批改重點："></a>批改重點：</h4><ul>
+<li>程式執行功能是否正確</li>
+<li>型別轉換是否正確</li>
+</ul>
+<h4 id="解答-1"><a href="#解答-1" class="headerlink" title="解答:"></a>解答:</h4><iframe height="300" style="width: 100%;" scrolling="no" title="JS直播班6/16 Day 2新手任務" src="https://codepen.io/pvzfeusk/embed/mdVWdwo?default-tab=html" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/pvzfeusk/pen/mdVWdwo">
+  JS直播班6/16 Day 2新手任務</a> by 胡謦麟 (<a target="_blank" rel="noopener" href="https://codepen.io/pvzfeusk">@pvzfeusk</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+
+<hr>
+<h2 id="🏅-Day-3"><a href="#🏅-Day-3" class="headerlink" title="🏅 Day 3"></a>🏅 Day 3</h2><p>杰倫對小明乞討的概念回應：「這個方式很遜，我們有錢人是不會做乞討的行為」，與小明提到「助人為快樂之本」，可以將「將資金借給需要的人」。由杰倫出錢小明去尋找鎮上需要幫助的人，借款後再收取微薄費用作為利息，不僅能夠賺錢更能助人。</p>
+<p>小明最喜歡幫助人了，別人的事情就是他的事情，但在開始前需要一個簡單的工具，用來計算是否可以借錢給需要的人。</p>
+<h4 id="任務：-2"><a href="#任務：-2" class="headerlink" title="任務："></a>任務：</h4><ul>
+<li>杰倫預設有 5,000,000 元</li>
+<li>鄰居的借款金額審核<ul>
+<li>填寫一個金額，並且計算是否符合借款標準</li>
+</ul>
+</li>
+<li>借款標準及利息，金額太低代表此人不需要幫助，越需要幫助的人利息越低<ul>
+<li>借款低於 1000 元，不借款</li>
+<li>1001 ~ 10000 年利率 20%</li>
+<li>10001 ~ 100000 年利率 18%</li>
+<li>100001 年利率 15%</li>
+</ul>
+</li>
+<li>於畫面上<ul>
+<li>呈現借或不借，當不借的時候「鄰居決定貸款」的按鈕加上 disabled，反之移除</li>
+<li>以及 1 ~ 3 年期的累計年利率</li>
+<li>數字都以整數呈現</li>
+</ul>
+</li>
+<li>增加一個按鈕 「鄰居決定貸款」<ul>
+<li>決定貸款後重新計算杰倫還有多少費用</li>
+<li>清空上方的資料內容</li>
+</ul>
+</li>
+</ul>
+<p>金額太少不借款<br><img src="https://i.imgur.com/exUTUHQ.png"></p>
+<p>試算利息金額<br><img src="https://i.imgur.com/YN0cBss.png"></p>
+<p>預估成效<br><img src="https://i.imgur.com/DrbhrWe.png"></p>
+<p>範例程式碼：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;number&quot; id&#x3D;&quot;input&quot;&gt; 鄰居的貸款金額</span><br><span class="line">&lt;button id&#x3D;&quot;submit&quot;&gt;送出&lt;&#x2F;button&gt;</span><br><span class="line"></span><br><span class="line">&lt;div&gt;貸款結果：&lt;span id&#x3D;&quot;result&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;一年期：&lt;span id&#x3D;&quot;oneYear&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li&gt;二年期：&lt;span id&#x3D;&quot;twoYears&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li&gt;三年期：&lt;span id&#x3D;&quot;threeYears&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;li&gt;</span><br><span class="line">&lt;&#x2F;ul&gt;</span><br><span class="line">&lt;button id&#x3D;&quot;loanBtn&quot;&gt;鄰居決定貸款&lt;&#x2F;button&gt;</span><br><span class="line">&lt;hr&gt;</span><br><span class="line">&lt;div&gt;杰倫還剩下：&lt;span id&#x3D;&quot;remaining&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;div&gt;三年後會有多少錢：&lt;span id&#x3D;&quot;profit&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;hr&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="學習重點：-2"><a href="#學習重點：-2" class="headerlink" title="學習重點："></a>學習重點：</h4><ul>
+<li>判斷式的運用</li>
+<li>型別轉換、parseInt 轉換成整數</li>
+<li>數字累算</li>
+</ul>
+<h4 id="普通挑戰：-2"><a href="#普通挑戰：-2" class="headerlink" title="普通挑戰："></a>普通挑戰：</h4><ul>
+<li>完成 1 ~ 3 年期的計算方式即可（確定借款不需要製作）</li>
+</ul>
+<h4 id="英雄挑戰：-2"><a href="#英雄挑戰：-2" class="headerlink" title="英雄挑戰："></a>英雄挑戰：</h4><ul>
+<li>使用陣列完成 1 ~ 3 年期的統計方式</li>
+<li>完成「確定借款」功能</li>
+</ul>
+<h4 id="批改重點：-2"><a href="#批改重點：-2" class="headerlink" title="批改重點："></a>批改重點：</h4><ul>
+<li>程式執行功能是否正確</li>
+<li>型別轉換是否正確</li>
+</ul>
+<h4 id="解答-2"><a href="#解答-2" class="headerlink" title="解答:"></a>解答:</h4><iframe height="300" style="width: 100%;" scrolling="no" title="JS直播班新手任務6/17Day3" src="https://codepen.io/pvzfeusk/embed/gOPmbba?default-tab=html" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/pvzfeusk/pen/gOPmbba">
+  JS直播班新手任務6/17Day3</a> by 胡謦麟 (<a target="_blank" rel="noopener" href="https://codepen.io/pvzfeusk">@pvzfeusk</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+
+<hr>
+<h2 id="🏅-Day-4"><a href="#🏅-Day-4" class="headerlink" title="🏅 Day 4"></a>🏅 Day 4</h2><p>小明認為，要呈現自己在「借款」領域的專業，就需要準備一台計算計算機，因此就自幹了一台計算機來解決工作上的需求。</p>
+<h4 id="任務：-3"><a href="#任務：-3" class="headerlink" title="任務："></a>任務：</h4><ul>
+<li>畫面上陳列數字 0 ~ 9、運算符號、計算的按鈕、呈現結果的區塊</li>
+<li>新增第一組數值、第二組數值的變數</li>
+<li>每次按下任何數字，都會將第一組數值顯示在畫面上</li>
+<li>按下運算符號後，則會進入第二組數值</li>
+<li>按下任何數字後，則會將第一組、運算符號、第二組數值呈現在畫面上</li>
+<li>按下 計算 的按鈕，則會計算以上的結果（呈現整數即可）</li>
+<li>計算結果後清除第一組、第二組、運算符號的變數內容</li>
+</ul>
+<p>範例程式碼：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;display&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;button class&#x3D;&quot;number&quot;&gt;0&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;button class&#x3D;&quot;number&quot;&gt;1&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;button class&#x3D;&quot;number&quot;&gt;2&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;button class&#x3D;&quot;number&quot;&gt;3&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;button class&#x3D;&quot;number&quot;&gt;4&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;button class&#x3D;&quot;number&quot;&gt;5&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;button class&#x3D;&quot;number&quot;&gt;6&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;button class&#x3D;&quot;number&quot;&gt;7&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;button class&#x3D;&quot;number&quot;&gt;8&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;button class&#x3D;&quot;number&quot;&gt;9&lt;&#x2F;button&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;button class&#x3D;&quot;operation&quot;&gt;+&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;button class&#x3D;&quot;operation&quot;&gt;-&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;button class&#x3D;&quot;operation&quot;&gt;*&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;button class&#x3D;&quot;operation&quot;&gt;&#x2F;&lt;&#x2F;button&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="學習重點：-3"><a href="#學習重點：-3" class="headerlink" title="學習重點："></a>學習重點：</h4><ul>
+<li>變數儲存的靈活運用</li>
+<li>迴圈的基本運用</li>
+<li>文字串接在畫面上的技巧</li>
+<li>利用判斷式決定第一組、第二組變數的運作</li>
+</ul>
+<h4 id="普通挑戰：-3"><a href="#普通挑戰：-3" class="headerlink" title="普通挑戰："></a>普通挑戰：</h4><ul>
+<li>輸入文字到畫面的呈現（不製作計算）</li>
+</ul>
+<h4 id="英雄挑戰：-3"><a href="#英雄挑戰：-3" class="headerlink" title="英雄挑戰："></a>英雄挑戰：</h4><ul>
+<li>完成計算功能</li>
+</ul>
+<h4 id="批改重點：-3"><a href="#批改重點：-3" class="headerlink" title="批改重點："></a>批改重點：</h4><ul>
+<li>程式執行功能是否正確</li>
+<li>型別轉換是否正確</li>
+</ul>
+<h4 id="解答-3"><a href="#解答-3" class="headerlink" title="解答:"></a>解答:</h4><iframe height="300" style="width: 100%;" scrolling="no" title="JS直播班新手任務Day 4 (6/18)基本計算機" src="https://codepen.io/pvzfeusk/embed/ZEQeOPX?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/pvzfeusk/pen/ZEQeOPX">
+  JS直播班新手任務Day 4 (6/18)基本計算機</a> by 胡謦麟 (<a target="_blank" rel="noopener" href="https://codepen.io/pvzfeusk">@pvzfeusk</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+
+<hr>
+<h2 id="🏅-Day-5"><a href="#🏅-Day-5" class="headerlink" title="🏅 Day 5"></a>🏅 Day 5</h2><p>人在江湖誠信最重要，為了避免糾紛需要紀錄每個鎮上居民的借款金額，小明又撰寫了一個工具來統計<del>用戶的借款記錄</del>小明的助人紀錄。</p>
+<p>也因為如此，小明很快迎來第一個客人，鎮上想要自己開店的小杰</p>
+<h4 id="任務：-4"><a href="#任務：-4" class="headerlink" title="任務："></a>任務：</h4><ul>
+<li>新增鄰居姓名、借款金額的欄位</li>
+<li>新增一個陣列，用來儲存所有用戶的借款記錄<ul>
+<li>每個陣列內都是一個物件，物件內包含了借款人、借款金額的欄位</li>
+</ul>
+</li>
+<li>當輸入姓名、金額 送出以後，則會新增一筆資料於借款陣列內</li>
+<li>預設先新增一筆用戶紀錄</li>
+<li>將陣列內的資料呈現於畫面上，包含<ul>
+<li>借款的總人數（陣列長度）</li>
+<li>貸款總金額（迴圈金額計算）</li>
+<li>欠款人的資料</li>
+</ul>
+</li>
+</ul>
+<p>參考畫面：<br><img src="https://i.imgur.com/sUIT6fq.png"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    鄰居姓名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span>&gt;</span></span><br><span class="line">    鄰居貸款金額：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span>&gt;</span>送出<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;display&quot;</span>&gt;</span>目前借貸人數 1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;displayTotal&quot;</span>&gt;</span>目前借貸總金額 50000<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;loanList&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="學習重點：-4"><a href="#學習重點：-4" class="headerlink" title="學習重點："></a>學習重點：</h4><ul>
+<li>陣列的新增技巧：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/push">https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/push</a></li>
+<li>陣列方法：<a target="_blank" rel="noopener" href="https://wcc723.github.io/javascript/2017/06/29/es6-native-array/">https://wcc723.github.io/javascript/2017/06/29/es6-native-array/</a></li>
+</ul>
+<h4 id="普通挑戰：-4"><a href="#普通挑戰：-4" class="headerlink" title="普通挑戰："></a>普通挑戰：</h4><ul>
+<li>完成以上功能</li>
+</ul>
+<h4 id="英雄挑戰：-4"><a href="#英雄挑戰：-4" class="headerlink" title="英雄挑戰："></a>英雄挑戰：</h4><ul>
+<li>完成編輯、刪除特定用戶的功能</li>
+</ul>
+<h4 id="批改重點：-4"><a href="#批改重點：-4" class="headerlink" title="批改重點："></a>批改重點：</h4><ul>
+<li>程式執行功能是否正確</li>
+<li>型別轉換是否正確</li>
+</ul>
+<h4 id="解答-4"><a href="#解答-4" class="headerlink" title="解答:"></a>解答:</h4><iframe height="300" style="width: 100%;" scrolling="no" title="JS直播班6/19新手任務" src="https://codepen.io/pvzfeusk/embed/eYJvBNa?default-tab=html" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/pvzfeusk/pen/eYJvBNa">
+  JS直播班6/19新手任務</a> by 胡謦麟 (<a target="_blank" rel="noopener" href="https://codepen.io/pvzfeusk">@pvzfeusk</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.
+</iframe>
+
+<p>參考: <a target="_blank" rel="noopener" href="https://hackmd.io/@hexschool/HJDbvkFqU/%2FEVTOFKXCRHeHGYcLVfklfw">課程連結</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/06/12/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day41/" rel="prev" title="Node.js 直播班每日任務🏅 Day 41(取得所有貼文，加上 comment)">
+      <i class="fa fa-chevron-left"></i> Node.js 直播班每日任務🏅 Day 41(取得所有貼文，加上 comment)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/04/03/%E6%AF%8F%E6%97%A5JS%E9%A1%8C%E5%BA%ABDay1-Day5/" rel="next" title="每日JS題庫Day1~Day5">
+      每日JS題庫Day1~Day5 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%8F%85-JS%E6%96%B0%E6%89%8B%E4%BB%BB%E5%8B%99%E6%9D%91"><span class="nav-number">1.</span> <span class="nav-text">🏅 JS新手任務村</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8F%85-Day-1"><span class="nav-number">1.1.</span> <span class="nav-text">🏅 Day 1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%BB%E5%8B%99%EF%BC%9A"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">任務：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%B8%E7%BF%92%E9%87%8D%E9%BB%9E%EF%BC%9A"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">學習重點：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E6%8C%91%E6%88%B0%EF%BC%9A"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">普通挑戰：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8B%B1%E9%9B%84%E6%8C%91%E6%88%B0%EF%BC%9A"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">英雄挑戰：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%B9%E6%94%B9%E9%87%8D%E9%BB%9E%EF%BC%9A"><span class="nav-number">1.1.0.5.</span> <span class="nav-text">批改重點：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94"><span class="nav-number">1.1.0.6.</span> <span class="nav-text">解答:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8F%85-Day-2"><span class="nav-number">1.2.</span> <span class="nav-text">🏅 Day 2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%BB%E5%8B%99%EF%BC%9A-1"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">任務：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%B8%E7%BF%92%E9%87%8D%E9%BB%9E%EF%BC%9A-1"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">學習重點：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E6%8C%91%E6%88%B0%EF%BC%9A-1"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">普通挑戰：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8B%B1%E9%9B%84%E6%8C%91%E6%88%B0%EF%BC%9A-1"><span class="nav-number">1.2.0.4.</span> <span class="nav-text">英雄挑戰：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%B9%E6%94%B9%E9%87%8D%E9%BB%9E%EF%BC%9A-1"><span class="nav-number">1.2.0.5.</span> <span class="nav-text">批改重點：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94-1"><span class="nav-number">1.2.0.6.</span> <span class="nav-text">解答:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8F%85-Day-3"><span class="nav-number">1.3.</span> <span class="nav-text">🏅 Day 3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%BB%E5%8B%99%EF%BC%9A-2"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">任務：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%B8%E7%BF%92%E9%87%8D%E9%BB%9E%EF%BC%9A-2"><span class="nav-number">1.3.0.2.</span> <span class="nav-text">學習重點：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E6%8C%91%E6%88%B0%EF%BC%9A-2"><span class="nav-number">1.3.0.3.</span> <span class="nav-text">普通挑戰：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8B%B1%E9%9B%84%E6%8C%91%E6%88%B0%EF%BC%9A-2"><span class="nav-number">1.3.0.4.</span> <span class="nav-text">英雄挑戰：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%B9%E6%94%B9%E9%87%8D%E9%BB%9E%EF%BC%9A-2"><span class="nav-number">1.3.0.5.</span> <span class="nav-text">批改重點：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94-2"><span class="nav-number">1.3.0.6.</span> <span class="nav-text">解答:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8F%85-Day-4"><span class="nav-number">1.4.</span> <span class="nav-text">🏅 Day 4</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%BB%E5%8B%99%EF%BC%9A-3"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">任務：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%B8%E7%BF%92%E9%87%8D%E9%BB%9E%EF%BC%9A-3"><span class="nav-number">1.4.0.2.</span> <span class="nav-text">學習重點：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E6%8C%91%E6%88%B0%EF%BC%9A-3"><span class="nav-number">1.4.0.3.</span> <span class="nav-text">普通挑戰：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8B%B1%E9%9B%84%E6%8C%91%E6%88%B0%EF%BC%9A-3"><span class="nav-number">1.4.0.4.</span> <span class="nav-text">英雄挑戰：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%B9%E6%94%B9%E9%87%8D%E9%BB%9E%EF%BC%9A-3"><span class="nav-number">1.4.0.5.</span> <span class="nav-text">批改重點：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94-3"><span class="nav-number">1.4.0.6.</span> <span class="nav-text">解答:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8F%85-Day-5"><span class="nav-number">1.5.</span> <span class="nav-text">🏅 Day 5</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%BB%E5%8B%99%EF%BC%9A-4"><span class="nav-number">1.5.0.1.</span> <span class="nav-text">任務：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%B8%E7%BF%92%E9%87%8D%E9%BB%9E%EF%BC%9A-4"><span class="nav-number">1.5.0.2.</span> <span class="nav-text">學習重點：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E6%8C%91%E6%88%B0%EF%BC%9A-4"><span class="nav-number">1.5.0.3.</span> <span class="nav-text">普通挑戰：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8B%B1%E9%9B%84%E6%8C%91%E6%88%B0%EF%BC%9A-4"><span class="nav-number">1.5.0.4.</span> <span class="nav-text">英雄挑戰：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%B9%E6%94%B9%E9%87%8D%E9%BB%9E%EF%BC%9A-4"><span class="nav-number">1.5.0.5.</span> <span class="nav-text">批改重點：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E7%AD%94-4"><span class="nav-number">1.5.0.6.</span> <span class="nav-text">解答:</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="CingLin"
+      src="https://i.imgur.com/sTHh4ii.jpg">
+  <p class="site-author-name" itemprop="name">CingLin</p>
+  <div class="site-description" itemprop="description">沒有痛苦，沒有收穫</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fas fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">若要轉載文章，麻煩請保留原作者名稱與原始連結。</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://CingLin.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://cinglin570.github.io.com/2023/04/03/JS%E6%96%B0%E6%89%8B%E4%BB%BB%E5%8B%99%E6%9D%91/";
+    this.page.identifier = "2023/04/03/JS新手任務村/";
+    this.page.title = "JS新手任務村";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://CingLin.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
