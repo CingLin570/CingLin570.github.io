@@ -3198,6 +3198,7 @@ Drink.deleteMany({})
     <title>每日切版題庫Day1</title>
     <url>/2023/05/01/%E6%AF%8F%E6%97%A5%E5%88%87%E7%89%88%E9%A1%8C%E5%BA%ABDay1/</url>
     <content><![CDATA[<h1 id="💪-每日任務題目列表"><a href="#💪-每日任務題目列表" class="headerlink" title="💪 每日任務題目列表"></a>💪 每日任務題目列表</h1><h2 id="🏅-Day-1"><a href="#🏅-Day-1" class="headerlink" title="🏅 Day 1"></a>🏅 Day 1</h2><h2 id="HTML-語意標籤運用"><a href="#HTML-語意標籤運用" class="headerlink" title="HTML 語意標籤運用"></a>HTML 語意標籤運用</h2><p>語意標籤可以增加可讀性，透過閱讀標籤就了解該區塊的意思，幫助搜尋引擎以及瀏覽器的顯示跟搜尋。</p>
+<a id="more"></a>
 <h3 id="基本-HTML-標籤介紹"><a href="#基本-HTML-標籤介紹" class="headerlink" title="基本 HTML 標籤介紹"></a>基本 HTML 標籤介紹</h3><p><strong>h1 ~ h6</strong><br>一個網頁一定會有一個 h1 標籤，用來標示網頁中最重要的資訊。其餘 h2 ~ h6 依照重要性依序使用。</p>
 <p><strong>img</strong><br>圖片使用 img 標籤，圖片位址放在標籤內 src 屬性中。<br>將 alt 屬性內補上描述，當圖片失效時可以呈現出文字，讓使用者可以了解原本圖片的意義。</p>
 <p><strong>a</strong><br>連結使用 a 標籤，網址連結放在標籤內 href 屬性中。<br>當目前沒有要連至特定網頁時可以設定為 <code>&lt;a href=&quot;#&quot;&gt; ... &lt;/a&gt;</code></p>
@@ -3222,6 +3223,7 @@ Drink.deleteMany({})
 <p>因此</p>
 <p>這就是為什麼語意化標籤 (HTML5) 會這麼重要以及如何寫出好的 HTML 心法</p>
 </blockquote>
+<p>來源：<a href="https://www.hexschool.com/courses/web-layout-training-1st.html">https://www.hexschool.com/courses/web-layout-training-1st.html</a></p>
 ]]></content>
       <categories>
         <category>每日切版題庫</category>
