@@ -21,18 +21,20 @@
     var CONFIG = {"hostname":"cinglin570.github.io.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="沒有痛苦，沒有收穫">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CingLin Blog">
-<meta property="og:url" content="http://cinglin570.github.io.com/categories/%E5%85%AD%E8%A7%92%E5%88%87%E7%89%88%E7%9B%B4%E6%92%AD%E7%8F%AD/index.html">
+  <meta name="description" content="💪 每日任務題目列表🏅 Day 21(Vue 2: props)上回回顧：面臨真心鎮警衛隊追殺之際，小明與小美即將離開真心鎮，重新過上新的生活。 離開前，小明希望可以留給漂亮阿姨一些話，同時解決這段時間所產生的誤會。突然一個陌生的圓手，拿出了 Vue 傳呼機。 小明：J 個是… 陌生的圓手：這是 Vue 的傳呼機，可以用來遠距離通訊使用，不過有點故障，就送給你吧。 說完，這隻手就消失在這個故事">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每日JS題庫Day21">
+<meta property="og:url" content="http://cinglin570.github.io.com/2023/05/01/%E6%AF%8F%E6%97%A5JS%E9%A1%8C%E5%BA%ABDay21/index.html">
 <meta property="og:site_name" content="CingLin Blog">
-<meta property="og:description" content="沒有痛苦，沒有收穫">
+<meta property="og:description" content="💪 每日任務題目列表🏅 Day 21(Vue 2: props)上回回顧：面臨真心鎮警衛隊追殺之際，小明與小美即將離開真心鎮，重新過上新的生活。 離開前，小明希望可以留給漂亮阿姨一些話，同時解決這段時間所產生的誤會。突然一個陌生的圓手，拿出了 Vue 傳呼機。 小明：J 個是… 陌生的圓手：這是 Vue 的傳呼機，可以用來遠距離通訊使用，不過有點故障，就送給你吧。 說完，這隻手就消失在這個故事">
 <meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2023-05-01T11:25:59.000Z">
+<meta property="article:modified_time" content="2023-05-01T11:30:25.524Z">
 <meta property="article:author" content="CingLin">
-<meta property="article:tag" content="前端,後端,全端,網頁,技術,網頁開發,前端開發,後端開發,JavaScript,HTML,CSS,SCSS">
+<meta property="article:tag" content="JS Vue.js">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://cinglin570.github.io.com/categories/%E5%85%AD%E8%A7%92%E5%88%87%E7%89%88%E7%9B%B4%E6%92%AD%E7%8F%AD/">
+<link rel="canonical" href="http://cinglin570.github.io.com/2023/05/01/%E6%AF%8F%E6%97%A5JS%E9%A1%8C%E5%BA%ABDay21/">
 
 
 <script id="page-configurations">
@@ -40,12 +42,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-TW'
   };
 </script>
 
-  <title>分類: 六角切版直播班 | CingLin Blog</title>
+  <title>每日JS題庫Day21 | CingLin Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXX-1 //UAID追蹤碼"></script>
     <script>
@@ -198,57 +200,136 @@
         <div class="content-wrap">
           
 
-          <div class="content category">
+          <div class="content post posts-expand">
             
 
+    
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://cinglin570.github.io.com/2023/05/01/%E6%AF%8F%E6%97%A5JS%E9%A1%8C%E5%BA%ABDay21/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.imgur.com/sTHh4ii.jpg">
+      <meta itemprop="name" content="CingLin">
+      <meta itemprop="description" content="沒有痛苦，沒有收穫">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CingLin Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          每日JS題庫Day21
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2023-05-01 19:25:59 / 修改時間：19:30:25" itemprop="dateCreated datePublished" datetime="2023-05-01T19:25:59+08:00">2023-05-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a>
+                </span>
+            </span>
+
+          
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">六角切版直播班
-          <small>分類</small>
-        </h2>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2023/05/01/%E6%AF%8F%E6%97%A5JS%E9%A1%8C%E5%BA%ABDay21/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/05/01/每日JS題庫Day21/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+        <h1 id="💪-每日任務題目列表"><a href="#💪-每日任務題目列表" class="headerlink" title="💪 每日任務題目列表"></a>💪 每日任務題目列表</h1><h2 id="🏅-Day-21-Vue-2-props"><a href="#🏅-Day-21-Vue-2-props" class="headerlink" title="🏅 Day 21(Vue 2: props)"></a>🏅 Day 21(Vue 2: props)</h2><p>上回回顧：面臨真心鎮警衛隊追殺之際，小明與小美即將離開真心鎮，重新過上新的生活。</p>
+<p>離開前，小明希望可以留給漂亮阿姨一些話，同時解決這段時間所產生的誤會。突然一個陌生的圓手，拿出了 Vue 傳呼機。</p>
+<p>小明：J 個是…</p>
+<p>陌生的圓手：這是 Vue 的傳呼機，可以用來遠距離通訊使用，不過有點故障，就送給你吧。</p>
+<p>說完，這隻手就消失在這個故事裡，並找劇組領了便當回家用餐。</p>
+<p>透過小明的研究，了解到這個傳呼機與最近研究的 Vue 是屬於同一個技術，覺得花些時間修正錯誤，將心裡的訊息傳遞給漂亮阿姨知道。</p>
+<p>任務：</p>
+<ul>
+<li>了解 Props 的運作</li>
+<li>修正範例中的錯誤（三題，只需要調整 HTML）<a id="more"></a>
+<a target="_blank" rel="noopener" href="https://codepen.io/Wcc723/pen/eYJjgag?editors=1010">https://codepen.io/Wcc723/pen/eYJjgag?editors=1010</a></li>
+</ul>
+<h4 id="答案"><a href="#答案" class="headerlink" title="答案:"></a>答案:</h4><p class="codepen" data-height="300" data-default-tab="html" data-slug-hash="abRLzWy" data-user="pvzfeusk" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/pvzfeusk/pen/abRLzWy">
+  Vue - Props</a> by 胡謦麟 (<a target="_blank" rel="noopener" href="https://codepen.io/pvzfeusk">@pvzfeusk</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-02-14T17:58:57+08:00"
-              content="2021-02-14">
-          02-14
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JS-Vue-js/" rel="tag"># JS Vue.js</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/02/14/%E5%85%AD%E8%A7%92%E5%AD%B8%E9%99%A2%E5%88%87%E7%89%88%E7%9B%B4%E6%92%AD%E7%8F%AD%E7%AC%AC%E4%B8%80%E5%91%A8/" itemprop="url">
-            <span itemprop="name">第一週 1 px 也不差的版型控制術</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/05/01/%E6%AF%8F%E6%97%A5%E5%88%87%E7%89%88%E9%A1%8C%E5%BA%ABDay2/" rel="prev" title="每日切版題庫Day2">
+      <i class="fa fa-chevron-left"></i> 每日切版題庫Day2
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/05/01/%E6%AF%8F%E6%97%A5%E5%88%87%E7%89%88%E9%A1%8C%E5%BA%ABDay3/" rel="next" title="每日切版題庫Day3">
+      每日切版題庫Day3 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
 
           </div>
           
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -295,6 +376,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%F0%9F%92%AA-%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99%E9%A1%8C%E7%9B%AE%E5%88%97%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">💪 每日任務題目列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%8F%85-Day-21-Vue-2-props"><span class="nav-number">1.1.</span> <span class="nav-text">🏅 Day 21(Vue 2: props)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AD%94%E6%A1%88"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">答案:</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -425,6 +507,26 @@
   }
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://cinglin570.github.io.com/2023/05/01/%E6%AF%8F%E6%97%A5JS%E9%A1%8C%E5%BA%ABDay21/";
+    this.page.identifier = "2023/05/01/每日JS題庫Day21/";
+    this.page.title = "每日JS題庫Day21";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://CingLin.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
 
 </body>

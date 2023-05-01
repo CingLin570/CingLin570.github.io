@@ -204,6 +204,185 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://cinglin570.github.io.com/2022/05/30/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day32/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.imgur.com/sTHh4ii.jpg">
+      <meta itemprop="name" content="CingLin">
+      <meta itemprop="description" content="沒有痛苦，沒有收穫">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CingLin Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/30/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day32/" class="post-title-link" itemprop="url">Node.js 直播班每日任務🏅 Day 32(實作重設密碼)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2022-05-30 20:51:24 / 修改時間：20:52:51" itemprop="dateCreated datePublished" datetime="2022-05-30T20:51:24+08:00">2022-05-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node-js-%E7%9B%B4%E6%92%AD%E7%8F%AD-2022-%E6%98%A5%E5%AD%A3%E7%8F%AD/" itemprop="url" rel="index"><span itemprop="name">Node.js 直播班 - 2022 春季班</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/05/30/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day32/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/30/node春季直播班每日任務Day32/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="🏅-Day-32"><a href="#🏅-Day-32" class="headerlink" title="🏅 Day 32"></a>🏅 Day 32</h1><h2 id="實作重設密碼"><a href="#實作重設密碼" class="headerlink" title="實作重設密碼"></a>實作重設密碼</h2><h3 id="題目（將答案寫在-HackMD-並提交至回報區）"><a href="#題目（將答案寫在-HackMD-並提交至回報區）" class="headerlink" title="題目（將答案寫在 HackMD 並提交至回報區）"></a>題目（將答案寫在 HackMD 並提交至回報區）</h3><p>實作重設密碼 API POST <code>/users/updatePassword</code><br>流程大致上為：<br>接收 request body 的資料<br>→ 驗證：密碼與確認密碼欄位值需為一致，可自行加上必填欄位、密碼需至少 8 碼以上，並包含英文與數字 … 等等<br>→ 使用 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/bcryptjs">bcryptjs</a> 將密碼進行 hash<br>→ 更新至資料庫<br>→ <a target="_blank" rel="noopener" href="https://github.com/auth0/node-jsonwebtoken">jsonwebtoken</a> 產生 JWT 並回傳 user 資料及 token</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/30/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day32/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://cinglin570.github.io.com/2022/05/30/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day31/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.imgur.com/sTHh4ii.jpg">
+      <meta itemprop="name" content="CingLin">
+      <meta itemprop="description" content="沒有痛苦，沒有收穫">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CingLin Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/30/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day31/" class="post-title-link" itemprop="url">Node.js 直播班每日任務🏅 Day 31(JWT 驗證 middleware)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2022-05-30 20:49:30 / 修改時間：20:52:55" itemprop="dateCreated datePublished" datetime="2022-05-30T20:49:30+08:00">2022-05-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node-js-%E7%9B%B4%E6%92%AD%E7%8F%AD-2022-%E6%98%A5%E5%AD%A3%E7%8F%AD/" itemprop="url" rel="index"><span itemprop="name">Node.js 直播班 - 2022 春季班</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/05/30/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day31/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/30/node春季直播班每日任務Day31/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="🏅-Day-31"><a href="#🏅-Day-31" class="headerlink" title="🏅 Day 31"></a>🏅 Day 31</h1><h2 id="JWT-驗證-middleware"><a href="#JWT-驗證-middleware" class="headerlink" title="JWT 驗證 middleware"></a>JWT 驗證 middleware</h2><h3 id="題目（將答案寫在-HackMD-並提交至回報區）"><a href="#題目（將答案寫在-HackMD-並提交至回報區）" class="headerlink" title="題目（將答案寫在 HackMD 並提交至回報區）"></a>題目（將答案寫在 HackMD 並提交至回報區）</h3><ol>
+<li>延續前一天的每日任務，isAuth middleware 第 3 行的固定 token 改寫為：<br>接收 <code>req.headers.authorization</code>，驗證 <code>req.headers.authorization</code> 是否存在，以及是否為 <code>Bearer</code> 開頭<br>若符合此條件則取出 JWT 字串，若未成功取得 JWT，表示使用者可能尚未登入，需回傳 401 錯誤
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/30/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day31/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="http://cinglin570.github.io.com/2022/05/30/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day30/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -920,184 +1099,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="http://cinglin570.github.io.com/2022/05/13/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day24/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://i.imgur.com/sTHh4ii.jpg">
-      <meta itemprop="name" content="CingLin">
-      <meta itemprop="description" content="沒有痛苦，沒有收穫">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CingLin Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/13/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day24/" class="post-title-link" itemprop="url">Node.js 直播班每日任務🏅 Day 24(development 及 production 環境變數指令、客製錯誤訊息)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2022-05-13 19:54:32 / 修改時間：19:57:23" itemprop="dateCreated datePublished" datetime="2022-05-13T19:54:32+08:00">2022-05-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Node-js-%E7%9B%B4%E6%92%AD%E7%8F%AD-2022-%E6%98%A5%E5%AD%A3%E7%8F%AD/" itemprop="url" rel="index"><span itemprop="name">Node.js 直播班 - 2022 春季班</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2022/05/13/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day24/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/13/node春季直播班每日任務Day24/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="🏅-Day-24"><a href="#🏅-Day-24" class="headerlink" title="🏅 Day 24"></a>🏅 Day 24</h1><h2 id="development-及-production-環境變數指令、客製錯誤訊息"><a href="#development-及-production-環境變數指令、客製錯誤訊息" class="headerlink" title="development 及 production 環境變數指令、客製錯誤訊息"></a>development 及 production 環境變數指令、客製錯誤訊息</h2><p>由於通常不會將開發時遇到的詳細錯誤資訊（如 error.stack）呈現在客戶端，避免過多資訊暴露而有資安疑慮，因此會區分 development 及 production 模式下的錯誤訊息</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/13/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day24/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="http://cinglin570.github.io.com/2022/05/13/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day23/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://i.imgur.com/sTHh4ii.jpg">
-      <meta itemprop="name" content="CingLin">
-      <meta itemprop="description" content="沒有痛苦，沒有收穫">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CingLin Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/05/13/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day23/" class="post-title-link" itemprop="url">Node.js 直播班每日任務🏅 Day 23(自訂錯誤訊息)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2022-05-13 19:52:47 / 修改時間：19:54:24" itemprop="dateCreated datePublished" datetime="2022-05-13T19:52:47+08:00">2022-05-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Node-js-%E7%9B%B4%E6%92%AD%E7%8F%AD-2022-%E6%98%A5%E5%AD%A3%E7%8F%AD/" itemprop="url" rel="index"><span itemprop="name">Node.js 直播班 - 2022 春季班</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2022/05/13/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day23/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/13/node春季直播班每日任務Day23/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="🏅-Day-23"><a href="#🏅-Day-23" class="headerlink" title="🏅 Day 23"></a>🏅 Day 23</h1><h2 id="自訂錯誤訊息"><a href="#自訂錯誤訊息" class="headerlink" title="自訂錯誤訊息"></a>自訂錯誤訊息</h2><p>我們可以另外新增自定義錯誤訊息的模組，在預期使用者可能會出錯的地方驗證錯誤</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/05/13/node%E6%98%A5%E5%AD%A3%E7%9B%B4%E6%92%AD%E7%8F%AD%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8B%99Day23/#more" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1169,7 +1170,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">73</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
