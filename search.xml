@@ -3345,4 +3345,79 @@ Drink.deleteMany({})
         <tag>JS Vue.js</tag>
       </tags>
   </entry>
+  <entry>
+    <title>每日切版題庫Day4</title>
+    <url>/2023/05/02/%E6%AF%8F%E6%97%A5%E5%88%87%E7%89%88%E9%A1%8C%E5%BA%ABDay4/</url>
+    <content><![CDATA[<h1 id="💪-每日任務題目列表"><a href="#💪-每日任務題目列表" class="headerlink" title="💪 每日任務題目列表"></a>💪 每日任務題目列表</h1><h2 id="🏅-Day-4"><a href="#🏅-Day-4" class="headerlink" title="🏅 Day 4"></a>🏅 Day 4</h2><h2 id="推擠方向"><a href="#推擠方向" class="headerlink" title="推擠方向"></a>推擠方向</h2><p>題目中部分元素已經有 10px 的間距，但是同時使用了兩種不同的推擠方向<br>請練習將推擠方向修改為一致，但只能修改 HTML 的 class 內容，並且最後畫面要跟原本的一樣</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;wrap&quot;&gt;</span><br><span class="line">  &lt;h1 class&#x3D;&quot;title mt-1&quot;&gt;標題&lt;&#x2F;h1&gt;</span><br><span class="line">  &lt;p class&#x3D;&quot;text mb-1&quot;&gt;</span><br><span class="line">    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates ratione blanditiis modi!</span><br><span class="line">  &lt;&#x2F;p&gt; </span><br><span class="line">  &lt;img class&#x3D;&quot;img mb-1&quot; src&#x3D;&quot;https:&#x2F;&#x2F;ithelp.ithome.com.tw&#x2F;storage&#x2F;image&#x2F;logo.svg&quot; alt&#x3D;&quot;&quot;&gt;</span><br><span class="line">  &lt;h2&gt;副標題&lt;&#x2F;h2&gt;</span><br><span class="line">  &lt;ul class&#x3D;&quot;list mt-1&quot;&gt;</span><br><span class="line">    &lt;li&gt;1&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li&gt;2&lt;&#x2F;li&gt;</span><br><span class="line">    &lt;li&gt;3&lt;&#x2F;li&gt;</span><br><span class="line">  &lt;&#x2F;ul&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.mb-1</span>&#123;</span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.mt-1</span>&#123;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>需加上 CSS Reset</p>
+</blockquote>
+<p>解答：只需要看是否有統一推擠方向，所以全部改使用 mt-1 或是 mb-1 都是對的唷</p>
+<h4 id="答案"><a href="#答案" class="headerlink" title="答案:"></a>答案:</h4><iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/pvzfeusk/embed/yLRzvYb?default-tab=html" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/pvzfeusk/pen/yLRzvYb">
+  Untitled</a> by 胡謦麟 (<a href="https://codepen.io/pvzfeusk">@pvzfeusk</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>]]></content>
+      <categories>
+        <category>每日切版題庫</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>每日切版題庫Day5</title>
+    <url>/2023/05/02/%E6%AF%8F%E6%97%A5%E5%88%87%E7%89%88%E9%A1%8C%E5%BA%ABDay5/</url>
+    <content><![CDATA[<h1 id="💪-每日任務題目列表"><a href="#💪-每日任務題目列表" class="headerlink" title="💪 每日任務題目列表"></a>💪 每日任務題目列表</h1><h1 id="🏅-Day-5"><a href="#🏅-Day-5" class="headerlink" title="🏅 Day 5"></a>🏅 Day 5</h1><h2 id="margin、padding-混合運用"><a href="#margin、padding-混合運用" class="headerlink" title="margin、padding 混合運用"></a>margin、padding 混合運用</h2><h3 id="margin"><a href="#margin" class="headerlink" title="margin"></a>margin</h3><p>調整元素外邊距，向外推出元素與元素之間的間距、留白。<br>示意圖：<br><img src="https://i.imgur.com/6CQvmHv.png"></p>
+<h3 id="padding"><a href="#padding" class="headerlink" title="padding"></a>padding</h3><p>調整元素內邊距，向內推出外層與內層元素之間的間距、留白，或是 border 與元素內容之間的留白。<br>示意圖：<br><img src="https://i.imgur.com/uTN5G5c.png"></p>
+<a id="more"></a>
+<h3 id="題目"><a href="#題目" class="headerlink" title="題目"></a>題目</h3><p>請運用上方規則，調整此 <a href="https://codepen.io/hexschool/pen/VwQOZbL?editors=1100">CodePen</a>，並讓推擠方向一致。<br>（只需更改 HTML 區塊，修改間距（pt-1、pb-1、px-1、mt-1、mb-1）的設定）</p>
+<p>（提示：會運用到的 class：.mt-1/.mb-1 、.p-1）<br>示意圖：<br><img src="https://i.imgur.com/uJdixbN.png"></p>
+<h4 id="答案"><a href="#答案" class="headerlink" title="答案:"></a>答案:</h4><iframe height="300" style="width: 100%;" scrolling="no" title="Day5 - margin、padding 混合運用" src="https://codepen.io/pvzfeusk/embed/VwEMQbO?default-tab=html" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/pvzfeusk/pen/VwEMQbO">
+  Day5 - margin、padding 混合運用</a> by 胡謦麟 (<a href="https://codepen.io/pvzfeusk">@pvzfeusk</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+]]></content>
+      <categories>
+        <category>每日切版題庫</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>每日切版題庫Day6</title>
+    <url>/2023/05/02/%E6%AF%8F%E6%97%A5%E5%88%87%E7%89%88%E9%A1%8C%E5%BA%ABDay6/</url>
+    <content><![CDATA[<h1 id="💪-每日任務題目列表"><a href="#💪-每日任務題目列表" class="headerlink" title="💪 每日任務題目列表"></a>💪 每日任務題目列表</h1><h1 id="🏅-Day-6"><a href="#🏅-Day-6" class="headerlink" title="🏅 Day 6"></a>🏅 Day 6</h1><h2 id="box-model"><a href="#box-model" class="headerlink" title="box-model"></a>box-model</h2><p>請問 .box 實際高度是多少？(請不要用瀏覽器觀察)</p>
+<h3 id="畫面呈現"><a href="#畫面呈現" class="headerlink" title="畫面呈現"></a>畫面呈現</h3><p><strong>文字部分以兩行呈現為準</strong></p>
+<p><img src="https://i.imgur.com/HP0fOuq.png"></p>
+<a id="more"></a>
+<h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;box&quot;&gt;</span><br><span class="line">  &lt;p class&#x3D;&quot;text&quot;&gt;</span><br><span class="line">    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, provident sed illum recusandae nobis quidem? Cum nostrum, ab consectetur dolore fuga odit animi, debitis non quam deleniti sit numquam pariatur.</span><br><span class="line">  &lt;&#x2F;p&gt;</span><br><span class="line">  &lt;img class&#x3D;&quot;image&quot; src&#x3D;&quot;https:&#x2F;&#x2F;ithelp.ithome.com.tw&#x2F;storage&#x2F;image&#x2F;logo.svg&quot; alt&#x3D;&quot;ithome&quot;&gt;</span><br><span class="line">&lt;&#x2F;div&gt;     </span><br></pre></td></tr></table></figure>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><pre><code class="css=">.box &#123;
+  border: 2px solid #000;
+&#125;
+.text&#123;
+  font-size: 16px;
+  line-height: 24px; 
+  margin-bottom: 30px;
+&#125;
+.image&#123;
+  height: 30px;
+  display: block;
+&#125;</code></pre>
+<p>解答：行高 24<em>2行 ＋ margin-bottom 30px + image height 30px + border 上下 2px</em>2，所以 .box 高度應該是 112px</p>
+]]></content>
+      <categories>
+        <category>每日切版題庫</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
 </search>
